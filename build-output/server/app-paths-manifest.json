@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about-me/page": "app/about-me/page.js",
+  "/page": "app/page.js",
+  "/portfolio/[id]/page": "app/portfolio/[id]/page.js",
+  "/portfolio/ai-job/page": "app/portfolio/ai-job/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/portfolio/suibi/page": "app/portfolio/suibi/page.js",
+  "/resume/page": "app/resume/page.js",
+  "/about/page": "app/about/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/portfolio/page": "app/portfolio/page.js"
+}
