@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { AboutSection } from "@/components/about-section"
 import { ExperienceSection } from "@/components/experience-section"
+import { ServicesSection } from "@/components/services-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
 
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <Navigation />
       <AboutSection />
       <ExperienceSection />
+      <ServicesSection />
       <TestimonialsSection />
       <Footer />
     </main>
