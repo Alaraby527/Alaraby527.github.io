@@ -3,9 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { projects, getProject } from "@/lib/portfolio-projects";
 import type { DetailCard } from "@/lib/portfolio-projects";
+import { legacyProjects, getLegacyProject } from "@/lib/legacy-projects";
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({ id: project.slug }));
+  return [
+    ...projects.map((project) => ({ id: project.slug })),
+    ...legacyProjects.map((project) => ({ id: project.id })),
+  ];
 }
 
 // 展示层配色/插画映射(与作品集列表页保持一致)
@@ -134,10 +138,12 @@ function DetailCardView({ card, color }: { card: DetailCard; color: string }) {
   );
 }
 
-export default function PortfolioDetail({ params }: { params: { id: string } }) {
-  const project = getProject(params.id);
+export default async function PortfolioDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const project = getProject(id);
+  const legacy = getLegacyProject(id);
 
-  if (!project) {
+  if (!project && !legacy) {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto text-center">
@@ -150,8 +156,88 @@ export default function PortfolioDetail({ params }: { params: { id: string } }) 
     );
   }
 
-  const style = cardStyles[project.slug] ?? { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" };
-  const demoLink = demoLinks[project.slug];
+  if (legacy) {
+    return (
+      <div className="min-h-screen bg-white">
+        <nav className="sticky top-0 z-50 bg-white border-b-4 border-black px-4 py-4">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <Link href="/portfolio" className="flex items-center gap-2 hover:gap-3 transition-all">
+              <ArrowLeft className="w-5 h-5" />
+              返回作品集
+            </Link>
+            <h1 className="text-xl font-bold">{legacy.category}</h1>
+            <div className="w-24"></div>
+          </div>
+        </nav>
+
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="bg-white border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div className="relative h-[300px] md:h-[500px]" style={{ backgroundColor: legacy.bgColor }}>
+              <Image src={legacy.image} alt={legacy.title} fill className="object-cover opacity-90" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+                <span className="inline-block bg-white text-black text-xs font-semibold px-4 py-1.5 rounded-full mb-3">
+                  {legacy.category}
+                </span>
+                <h1 className="text-3xl md:text-4xl font-bold text-white">{legacy.title}</h1>
+              </div>
+            </div>
+
+            <div className="p-6 md:p-10">
+              <div className="flex flex-wrap gap-4 mb-8">
+                <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
+                  <Calendar className="w-4 h-4 text-gray-600" />
+                  <span className="text-gray-700">{legacy.date}</span>
+                </div>
+                <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
+                  <Users className="w-4 h-4 text-gray-600" />
+                  <span className="text-gray-700">{legacy.team}</span>
+                </div>
+                <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
+                  <Tag className="w-4 h-4 text-gray-600" />
+                  <span className="text-gray-700">{legacy.tag}</span>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <SectionHeading title="项目概述" color={legacy.bgColor} />
+                <p className="text-gray-700 text-lg leading-relaxed">{legacy.description}</p>
+              </div>
+
+              <div className="mb-8">
+                <SectionHeading title="核心亮点" color={legacy.bgColor} />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {legacy.highlights.map((highlight, index) => (
+                    <div key={index} className="bg-[#FAF5F0] border-2 border-black rounded-xl p-4">
+                      <span className="text-gray-400 text-sm">#{index + 1}</span>
+                      <p className="font-medium text-gray-800 mt-1">{highlight}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#FAF5F0] border-2 border-black rounded-xl p-6">
+                <SectionHeading title="成果与影响" color={legacy.bgColor} />
+                <p className="text-gray-700 text-lg">{legacy.outcome}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              返回作品集
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const style = cardStyles[project!.slug] ?? { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" };
+  const demoLink = demoLinks[project!.slug];
 
   return (
     <div className="min-h-screen bg-white">

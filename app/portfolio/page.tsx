@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { PortfolioSection } from "@/components/portfolio-section"
+import { SupplementSection } from "@/components/supplement-section"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
@@ -14,6 +15,7 @@ export default function PortfolioPage() {
       <div className="pt-8">
         <PortfolioSection />
       </div>
+      <SupplementSection />
       <Footer />
     </main>
   )
