@@ -1,235 +1,300 @@
-import { ArrowLeft, Calendar, Tag, Users } from "lucide-react";
+import { ArrowLeft, Calendar, Tag, Users, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { projects, getProject } from "@/lib/portfolio-projects";
+import type { DetailCard } from "@/lib/portfolio-projects";
 
 export async function generateStaticParams() {
-  return [
-    { id: "ai-invoice" },
-    { id: "ai-job" },
-    { id: "article-1" },
-    { id: "article-2" },
-    { id: "major-1" },
-    { id: "major-2" },
-  ];
+  return projects.map((project) => ({ id: project.slug }));
 }
 
-const projects = {
-  "ai-invoice": {
-    id: "ai-invoice",
-    category: "AI相关",
-    title: "智能发票查重与合规审查系统",
-    description: "完整覆盖需求调研、迭代规划、AI工作流架构设计、提示词规则制定、风险评估与长期roadmap规划全流程，落地Dify平台+OCR识别的真实业务场景，有明确的效率提升数据，是典型的AI产品从0到1落地实践。",
-    tag: "AI产品",
-    bgColor: "#FF6B7A",
-    image: "/images/studio-workspace.svg",
-    date: "2026.06",
-    team: "个人项目",
-    highlights: [
-      "需求调研与用户访谈",
-      "AI工作流架构设计",
-      "提示词规则制定",
-      "Dify平台落地",
-      "OCR识别集成",
-      "风险评估与roadmap规划"
-    ],
-    outcome: "效率提升300%，准确率达到99.2%"
-  },
-  "ai-job": {
-    id: "ai-job",
-    category: "AI相关",
-    title: "一站式求职助手网页搭建",
-    description: "完整贯穿AI产品生命周期：包含用户研究、需求拆解、PRD撰写、产品架构设计、MVP落地、版本管控、项目复盘全链路，直面AI开发的真实痛点并给出解决方案，匹配AI产品经理'用AI落地产品、把控迭代节奏'的核心要求。",
-    tag: "AI产品",
-    bgColor: "#2563EB",
-    image: "/images/venture-workspace.svg",
-    date: "2026.04-至今",
-    team: "个人项目",
-    highlights: [
-      "用户研究与需求拆解",
-      "PRD撰写",
-      "产品架构设计",
-      "MVP落地",
-      "版本管控",
-      "项目复盘"
-    ],
-    outcome: "帮助500+用户优化求职流程"
-  },
-  "article-1": {
-    id: "article-1",
-    category: "文章",
-    title: "AI产品经理入门指南",
-    description: "从0到1了解AI产品经理的核心能力模型、工作流程和必备技能。深入分析AI产品与传统产品的区别，以及如何在AI浪潮中找到自己的定位。",
-    tag: "产品思考",
-    bgColor: "#10B981",
-    image: "/images/studio-workspace.svg",
-    date: "2026.05",
-    team: "个人创作",
-    highlights: [
-      "AI产品经理能力模型",
-      "工作流程解析",
-      "技能树搭建",
-      "职业发展路径"
-    ],
-    outcome: "阅读量10000+，收藏500+"
-  },
-  "article-2": {
-    id: "article-2",
-    category: "文章",
-    title: "数据标注与AI训练的底层逻辑",
-    description: "深入理解AI产品的底层逻辑，从数据标注到模型训练再到效果输出的完整链路，建立对AI技术边界、成本、数据价值的认知。",
-    tag: "技术洞察",
-    bgColor: "#8B5CF6",
-    image: "/images/venture-workspace.svg",
-    date: "2026.03",
-    team: "个人创作",
-    highlights: [
-      "数据标注流程",
-      "模型训练原理",
-      "效果评估方法",
-      "技术边界认知"
-    ],
-    outcome: "阅读量5000+，获行业专家认可"
-  },
-  "major-1": {
-    id: "major-1",
-    category: "专业相关",
-    title: "储能科学与工程课程项目",
-    description: "基于储能科学与工程专业知识，完成的课程设计项目。涉及电池性能测试、储能系统建模、能量管理策略优化等内容。",
-    tag: "学术项目",
-    bgColor: "#F59E0B",
-    image: "/images/studio-workspace.svg",
-    date: "2025.12",
-    team: "小组项目",
-    highlights: [
-      "电池性能测试",
-      "储能系统建模",
-      "能量管理策略",
-      "数据分析与报告"
-    ],
-    outcome: "获得课程最高分，被评为优秀项目"
-  },
-  "major-2": {
-    id: "major-2",
-    category: "专业相关",
-    title: "新能源技术调研报告",
-    description: "调研新能源技术发展现状与趋势，分析储能技术在新能源领域的应用前景，撰写专业调研报告。",
-    tag: "学术研究",
-    bgColor: "#EC4899",
-    image: "/images/venture-workspace.svg",
-    date: "2025.09",
-    team: "个人研究",
-    highlights: [
-      "文献调研",
-      "技术分析",
-      "市场预测",
-      "报告撰写"
-    ],
-    outcome: "发表于校学术期刊"
-  },
+// 展示层配色/插画映射(与作品集列表页保持一致)
+const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
+  "jd-ai-shopping-guide-agent": { bgColor: "#E1251B", illustration: "/images/studio-workspace.svg" },
+  "tv-shopping-copilot": { bgColor: "#2F81F7", illustration: "/images/venture-workspace.svg" },
+  "huohuahub-ai-creator-platform": { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" },
+  "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },
+  "lucky-growth-agent": { bgColor: "#6366F1", illustration: "/images/studio-workspace.svg" },
 };
 
+// 现有可交互 Demo 的站内入口(内容本体不变,只是把原有页面接进新作品集)
+const demoLinks: Record<string, { url: string; label: string }> = {
+  "jd-ai-shopping-guide-agent": { url: "/portfolio/ai-shopping", label: "查看京东 AI 导购交互原型 Demo" },
+};
+
+function SectionHeading({ title, color }: { title: string; color: string }) {
+  return (
+    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+      <span className="w-1 h-6" style={{ backgroundColor: color }}></span>
+      {title}
+    </h2>
+  );
+}
+
+function NumberedList({ items, color }: { items: string[]; color: string }) {
+  return (
+    <div className="space-y-3">
+      {items.map((item, index) => (
+        <div key={index} className="flex items-start gap-3 bg-[#FAF5F0] border-2 border-black rounded-xl p-4">
+          <span
+            className="flex-shrink-0 w-7 h-7 rounded-full border-2 border-black text-white text-sm font-bold flex items-center justify-center"
+            style={{ backgroundColor: color }}
+          >
+            {index + 1}
+          </span>
+          <p className="text-gray-800 leading-relaxed">{item}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DataTable({ table }: { table: { headers: string[]; rows: string[][] } }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border-2 border-black">
+      <table className="w-full text-sm bg-white border-collapse">
+        <thead>
+          <tr>
+            {table.headers.map((header, index) => (
+              <th key={index} className="bg-black text-white px-3 py-2 text-left font-semibold whitespace-nowrap">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, rowIndex) => (
+            <tr key={rowIndex} className={rowIndex % 2 === 1 ? "bg-[#FAF5F0]" : ""}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className="border-t-2 border-black px-3 py-2 align-top">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function DetailCardView({ card, color }: { card: DetailCard; color: string }) {
+  const mermaidUrl = card.mermaid
+    ? `https://mermaid.ink/img/${Buffer.from(card.mermaid, "utf8").toString("base64url")}?type=png&bgColor=F9F9F9`
+    : null;
+  return (
+    <div className="bg-white border-4 border-black rounded-3xl p-6 md:p-8">
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <span className="inline-block text-white text-xs font-semibold px-4 py-1.5 rounded-full border-2 border-black" style={{ backgroundColor: color }}>
+          {card.tag}
+        </span>
+        <h3 className="text-lg md:text-xl font-bold text-[#0B0B0B]">{card.title}</h3>
+      </div>
+
+      {card.intro && <p className="text-gray-600 mb-4 leading-relaxed">{card.intro}</p>}
+      {card.content && <p className="text-gray-700 leading-relaxed mb-2">{card.content}</p>}
+      {card.paragraphs && (
+        <div className="space-y-2 mb-2">
+          {card.paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-gray-700 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      )}
+      {card.table && (
+        <div className="my-4">
+          <DataTable table={card.table} />
+        </div>
+      )}
+      {mermaidUrl && (
+        <div className="my-4 border-2 border-black rounded-xl bg-[#F9F9F9] p-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={mermaidUrl} alt={`${card.title} 流程图`} loading="lazy" className="w-full" />
+        </div>
+      )}
+      {card.image && (
+        <div className="my-4 border-2 border-black rounded-xl overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={card.image} alt={`${card.title} 配图`} loading="lazy" className="w-full" />
+        </div>
+      )}
+      {card.link && (
+        <a
+          href={card.link.url}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 mt-2 bg-black text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
+        >
+          <ExternalLink className="w-4 h-4" />
+          {card.link.label}
+        </a>
+      )}
+    </div>
+  );
+}
+
 export default function PortfolioDetail({ params }: { params: { id: string } }) {
-  const project = projects[params.id as keyof typeof projects];
+  const project = getProject(params.id);
 
   if (!project) {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl font-bold mb-4">项目不存在</h1>
-          <Link href="/" className="text-blue-600 hover:underline">
-            返回首页
+          <Link href="/portfolio" className="text-blue-600 hover:underline">
+            返回作品集
           </Link>
         </div>
       </div>
     );
   }
 
+  const style = cardStyles[project.slug] ?? { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" };
+  const demoLink = demoLinks[project.slug];
+
   return (
     <div className="min-h-screen bg-white">
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-black px-4 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 hover:gap-3 transition-all">
+          <Link href="/portfolio" className="flex items-center gap-2 hover:gap-3 transition-all">
             <ArrowLeft className="w-5 h-5" />
-            返回首页
+            返回作品集
           </Link>
-          <h1 className="text-xl font-bold">作品集详情</h1>
+          <h1 className="text-xl font-bold">PROJECT {project.index}</h1>
           <div className="w-24"></div>
         </div>
       </nav>
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="bg-white border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <div className="relative h-[300px] md:h-[500px]" style={{ backgroundColor: project.bgColor }}>
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover opacity-90"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+          <div className="relative h-[300px] md:h-[500px]" style={{ backgroundColor: style.bgColor }}>
+            <Image src={style.illustration} alt={project.title} fill className="object-cover opacity-90" />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
               <span className="inline-block bg-white text-black text-xs font-semibold px-4 py-1.5 rounded-full mb-3">
-                {project.category}
+                {project.tags[0]}
               </span>
-              <h1 className="text-3xl md:text-4xl font-bold text-white">
-                {project.title}
-              </h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h1>
+              <p className="text-white/90 mt-2">{project.subtitle}</p>
             </div>
           </div>
 
           <div className="p-6 md:p-10">
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap gap-4 mb-6">
               <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
                 <Calendar className="w-4 h-4 text-gray-600" />
-                <span className="text-gray-700">{project.date}</span>
+                <span className="text-gray-700">{project.duration}</span>
               </div>
               <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
                 <Users className="w-4 h-4 text-gray-600" />
-                <span className="text-gray-700">{project.team}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-[#FAF5F0] px-4 py-2 rounded-xl border-2 border-black">
-                <Tag className="w-4 h-4 text-gray-600" />
-                <span className="text-gray-700">{project.tag}</span>
+                <span className="text-gray-700">{project.role}</span>
               </div>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <span className="w-1 h-6" style={{ backgroundColor: project.bgColor }}></span>
-                项目概述
-              </h2>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                {project.description}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map((tag) => (
+                <span key={tag} className="bg-black text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-10">
+              <div className="bg-[#FFC224] border-2 border-black rounded-xl p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p className="text-xl md:text-2xl font-bold text-[#0B0B0B]">{project.keyMetric.value}</p>
+                <p className="text-xs text-gray-700 mt-1">{project.keyMetric.label}</p>
+              </div>
+              {project.metrics.map((metric) => (
+                <div key={metric.label} className="bg-[#FAF5F0] border-2 border-black rounded-xl p-4 text-center">
+                  <p className="text-lg md:text-xl font-bold text-[#0B0B0B]">{metric.value}</p>
+                  <p className="text-xs text-gray-600 mt-1">{metric.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {(demoLink || project.sourceUrl) && (
+              <div className="flex flex-wrap gap-3 mb-10">
+                {demoLink && (
+                  <Link
+                    href={demoLink.url}
+                    className="inline-flex items-center gap-2 bg-[#FFC224] text-black border-2 border-black px-5 py-2.5 rounded-xl font-semibold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {demoLink.label}
+                  </Link>
+                )}
+                {project.sourceUrl && (
+                  <a
+                    href={project.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    查看项目源码 / 在线 Demo
+                  </a>
+                )}
+              </div>
+            )}
+
+            <div className="mb-10">
+              <SectionHeading title="项目概述" color={style.bgColor} />
+              <p className="text-gray-700 text-lg leading-relaxed">{project.summary}</p>
+            </div>
+
+            <div className="mb-10">
+              <SectionHeading title="面临的挑战" color={style.bgColor} />
+              <p className="text-gray-700 text-lg leading-relaxed bg-[#FAF5F0] border-2 border-black rounded-xl p-5">
+                {project.challenge}
               </p>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <span className="w-1 h-6" style={{ backgroundColor: project.bgColor }}></span>
-                核心亮点
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {project.highlights.map((highlight, index) => (
-                  <div key={index} className="bg-[#FAF5F0] border-2 border-black rounded-xl p-4">
-                    <span className="text-gray-400 text-sm">#{index + 1}</span>
-                    <p className="font-medium text-gray-800 mt-1">{highlight}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="mb-10">
+              <SectionHeading title="用户研究与洞察" color={style.bgColor} />
+              <NumberedList items={project.research} color={style.bgColor} />
             </div>
 
-            <div className="bg-[#FAF5F0] border-2 border-black rounded-xl p-6">
-              <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
-                <span className="w-1 h-6" style={{ backgroundColor: project.bgColor }}></span>
-                成果与影响
+            <div className="mb-10">
+              <SectionHeading title="解决方案" color={style.bgColor} />
+              <NumberedList items={project.solution} color={style.bgColor} />
+            </div>
+
+            <div className="mb-10">
+              <SectionHeading title="AI 策略" color={style.bgColor} />
+              <NumberedList items={project.aiStrategy} color={style.bgColor} />
+            </div>
+
+            {project.detailCards && project.detailCards.length > 0 && (
+              <div className="mb-10">
+                <SectionHeading title="证据与决策" color={style.bgColor} />
+                <div className="space-y-6">
+                  {project.detailCards.map((card, index) => (
+                    <DetailCardView key={index} card={card} color={style.bgColor} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mb-10">
+              <SectionHeading title="成果与影响" color={style.bgColor} />
+              <p className="text-gray-700 text-lg leading-relaxed bg-[#FAF5F0] border-2 border-black rounded-xl p-5">
+                {project.result}
+              </p>
+            </div>
+
+            <div className="bg-black text-white rounded-2xl p-6 md:p-8">
+              <h2 className="text-2xl font-bold mb-3 flex items-center gap-2">
+                <span className="w-1 h-6 bg-[#FFC224]"></span>
+                复盘与反思
               </h2>
-              <p className="text-gray-700 text-lg">{project.outcome}</p>
+              <p className="text-white/90 leading-relaxed">{project.reflection}</p>
             </div>
           </div>
         </div>
 
         <div className="mt-8 text-center">
           <Link
-            href="/"
+            href="/portfolio"
             className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
