@@ -23,9 +23,10 @@ const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
 // 现有可交互 Demo 的站内入口(内容本体不变,只是把原有页面接进新作品集)
 const demoLinks: Record<string, { url: string; label: string }> = {};
 
-function SectionHeading({ title, color }: { title: string; color: string }) {
+function SectionHeading({ index, title, color }: { index?: string; title: string; color: string }) {
   return (
     <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+      {index && <span className="font-mono text-sm text-gray-400">{index}</span>}
       <span className="w-1 h-6" style={{ backgroundColor: color }}></span>
       {title}
     </h2>
@@ -326,7 +327,7 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
             </div>
 
             <div className="mb-10">
-              <SectionHeading title="面临的挑战" color={style.bgColor} />
+              <SectionHeading index="01" title="业务背景:真实痛点" color={style.bgColor} />
               <p className="text-gray-700 text-lg leading-relaxed bg-[#FAF5F0] border-2 border-black rounded-xl p-5">
                 {project.challenge}
               </p>
@@ -334,28 +335,28 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
 
             {project.research.length > 0 && (
               <div className="mb-10">
-                <SectionHeading title="用户研究与洞察" color={style.bgColor} />
+                <SectionHeading index="02" title="问题证据与用户场景" color={style.bgColor} />
                 <NumberedList items={project.research} color={style.bgColor} />
               </div>
             )}
 
             {project.solution.length > 0 && (
               <div className="mb-10">
-                <SectionHeading title="解决方案" color={style.bgColor} />
+                <SectionHeading index="03" title="技术选择与人机方案" color={style.bgColor} />
                 <NumberedList items={project.solution} color={style.bgColor} />
               </div>
             )}
 
             {project.aiStrategy.length > 0 && (
               <div className="mb-10">
-                <SectionHeading title="AI 策略" color={style.bgColor} />
+                <SectionHeading index="04" title="AI 专项设计" color={style.bgColor} />
                 <NumberedList items={project.aiStrategy} color={style.bgColor} />
               </div>
             )}
 
             {project.detailCards && project.detailCards.length > 0 && (
               <div className="mb-10">
-                <SectionHeading title="证据与决策" color={style.bgColor} />
+                <SectionHeading index="05" title="流程闭环与工作流" color={style.bgColor} />
                 <div className="space-y-6">
                   {project.detailCards.map((card, index) => (
                     <DetailCardView key={index} card={card} color={style.bgColor} />
@@ -365,7 +366,7 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
             )}
 
             <div className="mb-10">
-              <SectionHeading title="成果与影响" color={style.bgColor} />
+              <SectionHeading index="06" title="量化复盘" color={style.bgColor} />
               <p className="text-gray-700 text-lg leading-relaxed bg-[#FAF5F0] border-2 border-black rounded-xl p-5">
                 {project.result}
               </p>

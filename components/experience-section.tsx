@@ -8,7 +8,9 @@ type Experience = {
   title: string
   summary: string
   icon: string
-  details: string[]
+  // 主经历:可展开,带指标与证据要点;次经历:仅一行略写
+  metrics?: { value: string; label: string }[]
+  details?: string[]
 }
 
 export function ExperienceSection() {
@@ -19,40 +21,59 @@ export function ExperienceSection() {
       title: "京东零售 AI 导购 Agent（实习）",
       summary: "面向黑电/3C 品类负责 AI 导购 Agent 迭代优化，从知识库到评测体系的全链路治理。",
       icon: "/images/agency.png",
+      metrics: [
+        { value: "78%→93%", label: "商品信息匹配准确率" },
+        { value: "30.2%→37.5%", label: "AI 咨询下单转化率" },
+        { value: "1200 万", label: "单月新增增量 GMV" },
+        { value: "38%→23%", label: "人工客服转接率" },
+      ],
       details: [
         "旁听 3 位客服 + 分析 12 万条日志定位核心痛点，20 个 Bad Case 归因拆解",
-        "重构 RAG 六层分层知识库，商品信息匹配准确率 78%→93%",
-        "设计 6 套 Agent 提示词模板（Master 总控+5 个专项 Agent），MCP 实时调用商品/价格/库存工具",
+        "重构 RAG 六层分层知识库，设计 6 套 Agent 提示词模板（Master 总控+5 个专项 Agent）",
+        "MCP 实时调用商品/价格/库存工具，价格禁止估算、强制走实时 API",
         "搭建全维度指标看板与 Bad Case 闭环治理，灰度四步走（1%→50%→全量）放量",
-        "推动 AI 咨询下单转化率 30.2%→37.5%，单月新增增量 GMV 约 1200 万元；人工客服转接率 38%→23%",
       ],
     },
     {
       title: "火花工坊 AI 运营（实习）",
       summary: "在 AI 创作者社区冷启动中负责用户调研、平台重设计与 AI 运营系统落地。",
       icon: "/images/company.png",
+      metrics: [
+        { value: "2h→3min", label: "周复盘耗时" },
+        { value: "90%", label: "黄金集评测通过率" },
+        { value: "4 个", label: "Dify 应用落地" },
+        { value: "15/15", label: "课件机器人评测" },
+      ],
       details: [
         "24 份问卷+访谈推翻「发课程=提供价值」假设，输出 12 项体验问题与平台重设计方案",
         "设计三类身份×五级成长体系与 Mentor SOP，飞书 Base App 把执行从五步压缩到三步",
         "528 张课件 OCR 化，搭建微信公众号 RAG 问答机器人（15 题评测全通过）",
-        "Dify 落地 4 应用+1 知识库，主控 Workflow 8 节点串联「数据→周画像→话术→写回飞书」，周复盘 2 小时→3 分钟，20 题黄金集评测通过率 90%",
+        "Dify 落地 4 应用+1 知识库，主控 Workflow 8 节点串联「数据→周画像→话术→写回飞书」",
       ],
     },
     {
       title: "唯享科技 测试实习生（实习）",
       summary: "独立完成 Coze 平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑。",
       icon: "/images/busines.png",
+      metrics: [
+        { value: "100%", label: "响应闭环率" },
+        { value: "3 层", label: "识别-校验-兜底逻辑" },
+      ],
       details: [
         "独立完成 Coze 平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑",
         "输出产品文档、跟进问题闭环、管理多任务优先级",
-        "MSDS 智能识别工作流测试验证，响应闭环率 100%",
-        "还原企业内 AI 产品经理对接业务、落地功能、保障上线的真实工作内容",
+        "MSDS 智能识别工作流测试验证，还原企业内 AI 产品经理对接业务、落地功能、保障上线的真实工作内容",
       ],
     },
     {
       title: "物智进化 数据采集&标注实习生（实习）",
       summary: "制定标准化 SOP 与判准，深入理解「数据标注→模型训练→效果输出」的 AI 全链路逻辑。",
       icon: "/images/startup.png",
+      metrics: [
+        { value: "1200→1800+", label: "日产出" },
+        { value: "50%", label: "产能提升" },
+        { value: "Top 1", label: "实习生排名" },
+      ],
       details: [
         "制定标准化 SOP 与三级判准，日产出 1200→1800+，产能提升 50%，位列实习生第一",
         "深入理解「数据标注→模型训练→效果输出」的 AI 全链路逻辑",
@@ -60,36 +81,28 @@ export function ExperienceSection() {
       ],
     },
     {
-      title: "理想 产品专家实习生（实习 · 门店运营）",
-      summary: "拿到产品专家实习 offer，入职后发现实际做的是门店运营，两天后选择离开。",
-      icon: "/images/agency.png",
-      details: [
-        "面试通过「产品专家实习生」岗位，入职后实际工作内容为门店运营",
-        "上两天班后选择离开——不是怕苦，是确认这不是自己想要的方向",
-        "这次「试错」把求职目标收窄到了 AI 产品",
-      ],
-    },
-    {
-      title: "提示词实习生（实习）",
-      summary: "专职与 Prompt 打交道，把提示词做成版本管理、离线评测、灰度回滚的系统工程。",
-      icon: "/images/company.png",
-      details: [
-        "结构化 Prompt 编写：按角色/任务/上下文/约束/示例/输出格式六段式组织",
-        "版本管理：每次修改记录版本号、修改原因和评测结果",
-        "离线评测：用黄金问题集跑 A/B 对比，量化准确率、完整性、拒答率",
-        "灰度与回滚：小流量验证→逐步放量，线上指标异常立即回退",
-      ],
-    },
-    {
       title: "视频剪辑 · 新媒体运营 · B站游戏推广（实习）",
       summary: "从视频剪辑入门，到新媒体运营，再到全流程负责一款手游的游戏推广。",
       icon: "/images/busines.png",
+      metrics: [
+        { value: "60+", label: "累计发布视频" },
+        { value: "1w+", label: "单条最高播放" },
+      ],
       details: [
         "从视频剪辑做起，承接新媒体运营",
         "全流程负责《三国谋定天下》手游的内容制作、发布与复盘",
-        "累计发布视频 60+，单条最高播放 1w+",
         "建立多平台内容发布与数据复盘流程，沉淀内容优化与增长方法论",
       ],
+    },
+    {
+      title: "理想 产品专家实习生（实习 · 门店运营）",
+      summary: "拿到产品专家实习 offer，入职后发现实际是门店运营，两天后明确离开，收窄了求职方向。",
+      icon: "/images/agency.png",
+    },
+    {
+      title: "提示词实习生（实习）",
+      summary: "专职与 Prompt 打交道：结构化编写、版本管理、离线评测与灰度回滚。",
+      icon: "/images/company.png",
     },
   ]
 
@@ -102,18 +115,19 @@ export function ExperienceSection() {
               来看看我的 <span className="bg-[#6366F1] text-white px-3 py-1 inline-block hl-block">过往经历</span>
             </h2>
             <p className="text-gray-400 leading-relaxed text-base md:text-lg">
-              只挑和产品经理相关的讲——从数据标注一路做到 AI 导购 Agent，点击每一段可以看到具体做了什么。
+              只挑和产品经理相关的讲——重点的展开看数据，其余的一笔带过。
             </p>
           </div>
 
           <div className="space-y-4">
             {experiences.map((exp, index) => {
+              const expandable = Boolean(exp.details?.length)
               const isOpen = openIndex === index
               return (
                 <div key={index} className="bg-white border-4 border-black rounded-3xl overflow-hidden">
                   <button
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full text-left p-5 md:p-6 flex items-start gap-4 md:gap-6 cursor-pointer"
+                    onClick={() => expandable && setOpenIndex(isOpen ? null : index)}
+                    className={`w-full text-left p-5 md:p-6 flex items-start gap-4 md:gap-6 ${expandable ? "cursor-pointer" : "cursor-default opacity-80"}`}
                   >
                     <span className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black text-white text-sm md:text-base font-bold flex items-center justify-center">
                       {String(index + 1).padStart(2, "0")}
@@ -132,13 +146,25 @@ export function ExperienceSection() {
                           className="w-10 h-10 md:w-12 md:h-12 rounded-full"
                         />
                       </div>
-                      <ChevronDown
-                        className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                      />
+                      {expandable && (
+                        <ChevronDown
+                          className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        />
+                      )}
                     </div>
                   </button>
-                  {isOpen && (
-                    <div className="px-5 md:px-6 pb-6 md:pb-8 -mt-1">
+                  {isOpen && exp.metrics && (
+                    <div className="px-5 md:px-6 -mt-1 mb-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {exp.metrics.map((metric) => (
+                        <div key={metric.label} className="bg-[#FAF5F0] border-2 border-black rounded-xl p-3 text-center">
+                          <p className="text-base md:text-lg font-bold text-[#0B0B0B]">{metric.value}</p>
+                          <p className="text-xs text-gray-600 mt-0.5">{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {isOpen && exp.details && (
+                    <div className="px-5 md:px-6 pb-6 md:pb-8">
                       <div className="border-t-2 border-dashed border-gray-300 pt-5 space-y-3">
                         {exp.details.map((detail, detailIndex) => (
                           <div key={detailIndex} className="flex items-start gap-3">
