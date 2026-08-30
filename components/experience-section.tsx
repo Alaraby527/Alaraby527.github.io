@@ -2,15 +2,18 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ChevronDown } from "lucide-react"
+import Link from "next/link"
+import { ChevronDown, ArrowRight } from "lucide-react"
 
 type Experience = {
   title: string
   summary: string
   icon: string
-  // 主经历:可展开,带指标与证据要点;次经历:仅一行略写
+  // 核心实习:可展开,带指标与证据要点;次要实习:仅一行略写
   metrics?: { value: string; label: string }[]
   details?: string[]
+  link?: { url: string; label: string }
+  minor?: boolean
 }
 
 export function ExperienceSection() {
@@ -36,6 +39,7 @@ export function ExperienceSection() {
     },
     {
       title: "火花工坊 AI 运营（实习）",
+      link: { url: "/portfolio/huohua-worktable", label: "衍生作品:火花工坊实习生工作台" },
       summary: "在 AI 创作者社区冷启动中负责用户调研、平台重设计与 AI 运营系统落地。",
       icon: "/images/company.png",
       metrics: [
@@ -53,6 +57,7 @@ export function ExperienceSection() {
     },
     {
       title: "唯享科技 测试实习生（实习）",
+      link: { url: "/portfolio/msds-hazard-identification-workflow", label: "衍生作品:MSDS 智能识别 Agent" },
       summary: "独立完成 Coze 平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑。",
       icon: "/images/busines.png",
       metrics: [
@@ -84,25 +89,13 @@ export function ExperienceSection() {
       title: "视频剪辑 · 新媒体运营 · B站游戏推广（实习）",
       summary: "从视频剪辑入门，到新媒体运营，再到全流程负责一款手游的游戏推广。",
       icon: "/images/busines.png",
-      metrics: [
-        { value: "60+", label: "累计发布视频" },
-        { value: "1w+", label: "单条最高播放" },
-      ],
-      details: [
-        "从视频剪辑做起，承接新媒体运营",
-        "全流程负责《三国谋定天下》手游的内容制作、发布与复盘",
-        "建立多平台内容发布与数据复盘流程，沉淀内容优化与增长方法论",
-      ],
-    },
-    {
-      title: "理想 产品专家实习生（实习 · 门店运营）",
-      summary: "拿到产品专家实习 offer，入职后发现实际是门店运营，两天后明确离开，收窄了求职方向。",
-      icon: "/images/agency.png",
+      minor: true,
     },
     {
       title: "提示词实习生（实习）",
       summary: "专职与 Prompt 打交道：结构化编写、版本管理、离线评测与灰度回滚。",
       icon: "/images/company.png",
+      minor: true,
     },
   ]
 
@@ -115,7 +108,7 @@ export function ExperienceSection() {
               来看看我的 <span className="bg-[#6366F1] text-white px-3 py-1 inline-block hl-block">过往经历</span>
             </h2>
             <p className="text-gray-400 leading-relaxed text-base md:text-lg">
-              只挑和产品经理相关的讲——重点的展开看数据，其余的一笔带过。
+              只讲和产品经理相关的:前四段是核心实习,展开看数据与证据;其余一笔带过。
             </p>
           </div>
 
@@ -127,7 +120,7 @@ export function ExperienceSection() {
                 <div key={index} className="bg-white border-4 border-black rounded-3xl overflow-hidden">
                   <button
                     onClick={() => expandable && setOpenIndex(isOpen ? null : index)}
-                    className={`w-full text-left p-5 md:p-6 flex items-start gap-4 md:gap-6 ${expandable ? "cursor-pointer" : "cursor-default opacity-80"}`}
+                    className={`w-full text-left p-5 md:p-6 flex items-start gap-4 md:gap-6 ${expandable ? "cursor-pointer" : "cursor-default opacity-70"}`}
                   >
                     <span className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black text-white text-sm md:text-base font-bold flex items-center justify-center">
                       {String(index + 1).padStart(2, "0")}
@@ -173,6 +166,15 @@ export function ExperienceSection() {
                           </div>
                         ))}
                       </div>
+                      {exp.link && (
+                        <Link
+                          href={exp.link.url}
+                          className="mt-4 inline-flex items-center gap-2 bg-[#FFC224] text-black border-2 border-black px-4 py-2 rounded-xl text-sm font-semibold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                          {exp.link.label}
+                        </Link>
+                      )}
                     </div>
                   )}
                 </div>
