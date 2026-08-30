@@ -88,11 +88,6 @@ export function Footer() {
               <h3 className="font-bold mb-4">更多</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
-                  <a href="/about-me" className="hover:text-white transition-colors">
-                    深入了解我
-                  </a>
-                </li>
-                <li>
                   <a href="/contact" className="hover:text-white transition-colors">
                     联系我
                   </a>

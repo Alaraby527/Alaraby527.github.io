@@ -3,6 +3,34 @@ import Link from "next/link"
 import { legacyProjects } from "@/lib/legacy-projects"
 import { methodologies } from "@/lib/methodologies"
 
+// GitHub 上的补充项目(描述取自各仓库简介)
+const githubProjects = [
+  {
+    title: "秋招工作台",
+    tag: "效率工具",
+    description: "岗位投递追踪、每日待办、面试复盘、习惯打卡的 PWA 应用,把秋招从「焦虑性忙碌」变成「系统性作战」。",
+    href: "https://github.com/Alaraby527/qiuzhao-workbench",
+  },
+  {
+    title: "AI 产品经理系统学习平台",
+    tag: "学习平台",
+    description: "12 周学习计划、面试题库、能力自测与 197 篇知识地图,把 AI PM 该学什么做成可交互的学习产品。",
+    href: "https://github.com/Alaraby527/aipm-learning-assistant",
+  },
+  {
+    title: "AI 产品经理求职教练",
+    tag: "AI 应用",
+    description: "JD 差距分析、7 天行动计划与模拟面试四维评分,让求职准备有据可依。",
+    href: "https://github.com/Alaraby527/ai-pm-coach",
+  },
+  {
+    title: "报销票据风险审核原型",
+    tag: "AI 产品",
+    description: "可评测、可追溯、有人机兜底的企业报销票据重复与异常风险审核原型。",
+    href: "https://github.com/Alaraby527/invoice-risk-review-agent",
+  },
+]
+
 // 方法论三分类
 const methodologyGroups = [
   {
@@ -41,7 +69,7 @@ export function SupplementSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             补充<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">项目</span>
           </h2>
-          <p className="text-gray-600">一些更早期的完整项目,记录了我一路走来的痕迹。</p>
+          <p className="text-gray-600">早期完整项目与 GitHub 上的开源尝试,记录了我一路走来的痕迹。</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
@@ -64,6 +92,28 @@ export function SupplementSection() {
                 <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
+          ))}
+          {githubProjects.map((project) => (
+            <a
+              key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group bg-[#FAF5F0] border-4 border-black rounded-3xl p-6 md:p-8 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <span className="inline-block bg-black text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+                  {project.tag}
+                </span>
+                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold mb-3 text-[#0B0B0B]">{project.title}</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4 line-clamp-3">{project.description}</p>
+              <span className="flex items-center gap-2 font-semibold text-[#0B0B0B] group-hover:gap-3 transition-all text-sm">
+                GitHub 仓库
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </a>
           ))}
         </div>
 

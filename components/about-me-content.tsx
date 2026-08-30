@@ -1,5 +1,4 @@
-import Link from "next/link"
-import { ArrowLeft, BookOpen, Tv, Heart, Briefcase, Star } from "lucide-react"
+import { BookOpen, Tv, Heart, Briefcase, Star } from "lucide-react"
 
 const timelineData = [
   { id: 1, type: "主线任务", typeColor: "bg-[#FF6B7A]", date: "2005年5月", title: "我出生了", description: "2005年5月，杨惠雯在贵州出生，开启了人生的新篇章。", side: "left" },
@@ -17,6 +16,8 @@ const timelineData = [
   { id: 12, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "2024年11月", title: "自学SolidWorks", description: "自学SolidWorks软件并获得岗位任职证书，提升了工程设计能力。", side: "right" },
   { id: 13, type: "主线任务", typeColor: "bg-[#FF6B7A]", date: "2024年12月", title: "第一份简历诞生", description: "完成人生第一份简历，正式开启求职之路。", side: "left" },
   { id: 14, type: "主线任务", typeColor: "bg-[#FF6B7A]", date: "2025年1月", title: "手游推广项目", description: "全流程负责《三国谋定天下》手游抖音/小红书的内容制作、发布与复盘，累计发布视频60+。", side: "left" },
+  { id: 14.5, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "大学期间", title: "接单做 PPT", description: "课余接单制作 PPT，把「讲清楚一件事」当成一门手艺来练。", side: "right" },
+  { id: 14.6, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "大学期间", title: "闲鱼开店", description: "在闲鱼上开了一间小店，跑通从选品、上架、客服到发货的完整流程。", side: "right" },
   { id: 15, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "2025年6月", title: "二级减速带机构设计", description: "用SolidWorks和CAD完成结构设计，输出规范工程图纸与项目说明书，专业能力进一步提升。", side: "right" },
   { id: 16, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "2025年7月", title: "知乎盐言图文创作", description: "作为核心创作者输出多篇符合平台调性的图文，提升内容选题与用户洞察能力。", side: "right" },
   { id: 17, type: "主线任务", typeColor: "bg-[#FF6B7A]", date: "2025年8月", title: "第二次创业：陪玩工作室", description: "作为创始人搭建4人团队，完成招聘培训与小红书引流，实现日均5单的运营规模。", side: "left" },
@@ -41,24 +42,12 @@ const timelineData = [
   { id: 39.5, type: "支线任务", typeColor: "bg-[#2F81F7]", date: "2026年7月", title: "参加观猹AI产品经理训练营", description: "参加观猹AI产品经理训练营并担任作业批改助教，提升产品知识与教学能力。", side: "right" }
 ]
 
-export default function AboutMePage() {
+// 原独立页面 /about-me 的内容,现合并进关于页(十八般武艺之前)
+export function AboutMeContent() {
   return (
-    <div className="min-h-screen bg-[#FFFFFF]">
-      <div className="container mx-auto px-4 py-8">
-        <nav className="relative flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-2xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-12">
-          <Link href="/" className="w-10 h-10 bg-black rounded-full flex items-center justify-center flex-shrink-0" aria-label="首页">
-            <div className="w-6 h-6 bg-white rounded-full"></div>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2 text-[18px] font-bold hover:opacity-70 transition-opacity">
-              <ArrowLeft className="w-5 h-5" />
-              返回首页
-            </Link>
-          </div>
-        </nav>
-
-        <div className="max-w-4xl mx-auto space-y-16">
-          <section className="text-center">
+    <section className="container mx-auto px-4 pb-16 md:pb-24">
+      <div className="max-w-4xl mx-auto space-y-16">
+        <section className="text-center">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               深入<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">了解我</span>
             </h1>
@@ -166,14 +155,7 @@ export default function AboutMePage() {
             </div>
           </section>
 
-          <section className="text-center">
-            <Link href="/" className="inline-flex items-center gap-2 bg-[#0B0B0B] text-white hover:bg-black/90 rounded-lg py-5 px-8 font-semibold transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              返回首页
-            </Link>
-          </section>
-        </div>
-      </div>
-    </div>
+                </div>
+    </section>
   )
 }

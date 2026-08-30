@@ -1,75 +1,95 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
+import { ChevronDown } from "lucide-react"
+
+type Experience = {
+  title: string
+  summary: string
+  icon: string
+  details: string[]
+}
 
 export function ExperienceSection() {
-  const experiences = [
-    {
-      title: "杨梅冰汤圆摆摊（创业）",
-      description: "第一次创业：摆摊卖杨梅冰汤圆。第一天一碗都没卖出去，但 3 天后实现回本。",
-      icon: "/images/agency.png",
-    },
-    {
-      title: "视频剪辑 · 新媒体运营 · B站游戏推广（实习）",
-      description: "从视频剪辑入门，到新媒体运营，再到全流程负责《三国谋定天下》手游的游戏推广：内容制作、发布与复盘，累计发布视频 60+。",
-      icon: "/images/company.png",
-    },
-    {
-      title: "接单做 PPT（副业）",
-      description: "课余接单制作 PPT。",
-      icon: "/images/busines.png",
-    },
-    {
-      title: "闲鱼开店（创业）",
-      description: "在闲鱼上开了一间小店，跑通从选品、上架、客服到发货的完整流程。",
-      icon: "/images/startup.png",
-    },
-    {
-      title: "游戏陪玩店 创始人（创业）",
-      description: "0 成本启动「无畏契约」游戏陪玩店：3 天完成筹备，搭建 4 人团队，完成招聘培训与小红书引流，5 天私域 100+，实现日均 5 单的运营规模。",
-      icon: "/images/agency.png",
-    },
-    {
-      title: "上海自动化仪表 采购实习生（实习）",
-      description: "负责采购合同全流程处理与供应商比价，借助 AI 将比价制作效率提升 3 倍。",
-      icon: "/images/company.png",
-    },
-    {
-      title: "物智进化 机械装配实习生（实习）",
-      description: "参与舵机组装调参，提出流水线作业方案，生产效率提升 10 倍且编号零出错。",
-      icon: "/images/busines.png",
-    },
-    {
-      title: "物智进化 数据采集&标注实习生（实习）",
-      description: "制定标准化 SOP 与三级判准，日产出 1800+ 位列实习生第一，产能提升 50%。",
-      icon: "/images/startup.png",
-    },
-    {
-      title: "唯享科技 测试实习生（实习）",
-      description:
-        "独立完成Coze平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑，输出产品文档、跟进问题闭环、管理多任务优先级，还原企业内AI产品经理对接业务、落地功能、保障上线的真实工作内容。",
-      icon: "/images/agency.png",
-    },
-    {
-      title: "理想 产品专家实习生（实习 · 门店运营）",
-      description:
-        "拿到理想的产品专家实习 offer，入职后发现实际做的是门店运营。上两天班后选择离开——但正是这段经历，让我确认了自己真正想要的方向。",
-      icon: "/images/company.png",
-    },
-    {
-      title: "提示词实习生（实习）",
-      description: "专职与 Prompt 打交道：结构化编写、版本管理、离线评测与灰度回滚，让模型输出稳定、可控、可迭代。",
-      icon: "/images/busines.png",
-    },
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const experiences: Experience[] = [
     {
       title: "京东零售 AI 导购 Agent（实习）",
-      description:
-        "面向黑电/3C 品类负责 AI 导购 Agent 迭代优化：重构 RAG 六层分层知识库，设计 6 套 Prompt 模板与评测机制，搭建全维度指标看板与 Bad Case 闭环治理体系。",
-      icon: "/images/startup.png",
+      summary: "面向黑电/3C 品类负责 AI 导购 Agent 迭代优化，从知识库到评测体系的全链路治理。",
+      icon: "/images/agency.png",
+      details: [
+        "旁听 3 位客服 + 分析 12 万条日志定位核心痛点，20 个 Bad Case 归因拆解",
+        "重构 RAG 六层分层知识库，商品信息匹配准确率 78%→93%",
+        "设计 6 套 Agent 提示词模板（Master 总控+5 个专项 Agent），MCP 实时调用商品/价格/库存工具",
+        "搭建全维度指标看板与 Bad Case 闭环治理，灰度四步走（1%→50%→全量）放量",
+        "推动 AI 咨询下单转化率 30.2%→37.5%，单月新增增量 GMV 约 1200 万元；人工客服转接率 38%→23%",
+      ],
     },
     {
       title: "火花工坊 AI 运营（实习）",
-      description:
-        "负责用户调研与平台重设计、作者成长体系与 Mentor SOP 设计，在 Dify 上落地 4 个应用与主控 Workflow，周复盘从 2 小时压缩到 3 分钟。",
+      summary: "在 AI 创作者社区冷启动中负责用户调研、平台重设计与 AI 运营系统落地。",
+      icon: "/images/company.png",
+      details: [
+        "24 份问卷+访谈推翻「发课程=提供价值」假设，输出 12 项体验问题与平台重设计方案",
+        "设计三类身份×五级成长体系与 Mentor SOP，飞书 Base App 把执行从五步压缩到三步",
+        "528 张课件 OCR 化，搭建微信公众号 RAG 问答机器人（15 题评测全通过）",
+        "Dify 落地 4 应用+1 知识库，主控 Workflow 8 节点串联「数据→周画像→话术→写回飞书」，周复盘 2 小时→3 分钟，20 题黄金集评测通过率 90%",
+      ],
+    },
+    {
+      title: "唯享科技 测试实习生（实习）",
+      summary: "独立完成 Coze 平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑。",
+      icon: "/images/busines.png",
+      details: [
+        "独立完成 Coze 平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑",
+        "输出产品文档、跟进问题闭环、管理多任务优先级",
+        "MSDS 智能识别工作流测试验证，响应闭环率 100%",
+        "还原企业内 AI 产品经理对接业务、落地功能、保障上线的真实工作内容",
+      ],
+    },
+    {
+      title: "物智进化 数据采集&标注实习生（实习）",
+      summary: "制定标准化 SOP 与判准，深入理解「数据标注→模型训练→效果输出」的 AI 全链路逻辑。",
+      icon: "/images/startup.png",
+      details: [
+        "制定标准化 SOP 与三级判准，日产出 1200→1800+，产能提升 50%，位列实习生第一",
+        "深入理解「数据标注→模型训练→效果输出」的 AI 全链路逻辑",
+        "建立对 AI 技术边界、成本、数据价值的认知，是 AI 产品经理区别于普通产品经理的核心底层能力",
+      ],
+    },
+    {
+      title: "理想 产品专家实习生（实习 · 门店运营）",
+      summary: "拿到产品专家实习 offer，入职后发现实际做的是门店运营，两天后选择离开。",
       icon: "/images/agency.png",
+      details: [
+        "面试通过「产品专家实习生」岗位，入职后实际工作内容为门店运营",
+        "上两天班后选择离开——不是怕苦，是确认这不是自己想要的方向",
+        "这次「试错」把求职目标收窄到了 AI 产品",
+      ],
+    },
+    {
+      title: "提示词实习生（实习）",
+      summary: "专职与 Prompt 打交道，把提示词做成版本管理、离线评测、灰度回滚的系统工程。",
+      icon: "/images/company.png",
+      details: [
+        "结构化 Prompt 编写：按角色/任务/上下文/约束/示例/输出格式六段式组织",
+        "版本管理：每次修改记录版本号、修改原因和评测结果",
+        "离线评测：用黄金问题集跑 A/B 对比，量化准确率、完整性、拒答率",
+        "灰度与回滚：小流量验证→逐步放量，线上指标异常立即回退",
+      ],
+    },
+    {
+      title: "视频剪辑 · 新媒体运营 · B站游戏推广（实习）",
+      summary: "从视频剪辑入门，到新媒体运营，再到全流程负责一款手游的游戏推广。",
+      icon: "/images/busines.png",
+      details: [
+        "从视频剪辑做起，承接新媒体运营",
+        "全流程负责《三国谋定天下》手游的内容制作、发布与复盘",
+        "累计发布视频 60+，单条最高播放 1w+",
+        "建立多平台内容发布与数据复盘流程，沉淀内容优化与增长方法论",
+      ],
     },
   ]
 
@@ -82,31 +102,56 @@ export function ExperienceSection() {
               来看看我的 <span className="bg-[#6366F1] text-white px-3 py-1 inline-block hl-block">过往经历</span>
             </h2>
             <p className="text-gray-400 leading-relaxed text-base md:text-lg">
-              经过多次尝试，我终于找到自己的dream job，我要当产品经理！这条路从摆摊一路走到 AI 产品，每一步都算数。
+              只挑和产品经理相关的讲——从数据标注一路做到 AI 导购 Agent，点击每一段可以看到具体做了什么。
             </p>
           </div>
 
           <div className="space-y-4">
-            {experiences.map((exp, index) => (
-              <div key={index} className="bg-white border-4 border-black rounded-3xl p-5 md:p-6 flex items-start gap-4 md:gap-6">
-                <span className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black text-white text-sm md:text-base font-bold flex items-center justify-center border-2 border-black">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base md:text-xl font-bold text-[#0B0B0B] mb-1 leading-snug">{exp.title}</h3>
-                  <p className="text-[#393939] text-sm md:text-base leading-relaxed">{exp.description}</p>
+            {experiences.map((exp, index) => {
+              const isOpen = openIndex === index
+              return (
+                <div key={index} className="bg-white border-4 border-black rounded-3xl overflow-hidden">
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="w-full text-left p-5 md:p-6 flex items-start gap-4 md:gap-6 cursor-pointer"
+                  >
+                    <span className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black text-white text-sm md:text-base font-bold flex items-center justify-center">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base md:text-xl font-bold text-[#0B0B0B] mb-1 leading-snug">{exp.title}</h3>
+                      <p className="text-[#393939] text-sm md:text-base leading-relaxed">{exp.summary}</p>
+                    </div>
+                    <div className="flex flex-col items-center gap-2 flex-shrink-0">
+                      <div className="rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hidden sm:block">
+                        <Image
+                          src={exp.icon || "/placeholder.svg"}
+                          alt={exp.title}
+                          width={48}
+                          height={48}
+                          className="w-10 h-10 md:w-12 md:h-12 rounded-full"
+                        />
+                      </div>
+                      <ChevronDown
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </div>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 md:px-6 pb-6 md:pb-8 -mt-1">
+                      <div className="border-t-2 border-dashed border-gray-300 pt-5 space-y-3">
+                        {exp.details.map((detail, detailIndex) => (
+                          <div key={detailIndex} className="flex items-start gap-3">
+                            <span className="flex-shrink-0 mt-1.5 w-2 h-2 rounded-full bg-black"></span>
+                            <p className="text-gray-700 text-sm md:text-base leading-relaxed">{detail}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 hidden sm:block">
-                  <Image
-                    src={exp.icon || "/placeholder.svg"}
-                    alt={exp.title}
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 md:w-12 md:h-12 rounded-full"
-                  />
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
