@@ -39,9 +39,9 @@ export function HeroSection() {
             onMouseLeave={() => setIsHovered(false)}
           >
             <img
-              src="/images/myphoto.png"
-              alt="人物插画头像"
-              className={`w-full h-full object-cover transition-transform duration-300 ${
+              src="/images/hero-portrait.png"
+              alt="数字人形象"
+              className={`w-full h-full object-contain transition-transform duration-300 ${
                 isHovered ? "scale-110" : ""
               }`}
             />
