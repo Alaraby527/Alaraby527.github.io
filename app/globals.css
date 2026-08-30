@@ -181,6 +181,25 @@
   background: #333333;
 }
 
+/* 彩色字块动效:周期性果冻晃动 + 悬停放大(scale 独立属性,与 rotate 动画叠加) */
+@keyframes hl-wobble {
+  0%, 90%, 100% { transform: rotate(0deg); }
+  91% { transform: rotate(-2deg) translateY(-2px); }
+  93% { transform: rotate(2.5deg) translateY(-1px); }
+  95% { transform: rotate(-1.5deg) translateY(-2px); }
+  97% { transform: rotate(1deg); }
+}
+.hl-block {
+  display: inline-block;
+  animation: hl-wobble 4.5s ease-in-out infinite;
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hl-block:hover {
+  scale: 1.07;
+}
+.hl-block:nth-child(2n) { animation-delay: 0.15s; }
+.hl-block:nth-child(3n) { animation-delay: 0.3s; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

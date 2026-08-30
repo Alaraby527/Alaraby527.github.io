@@ -16,7 +16,7 @@ export function AboutSection() {
         <div className="space-y-6 md:space-y-8">
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Welcome to <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">Alaraby的世界</span>
+              Welcome to <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block hl-block">Alaraby的世界</span>
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
               你好！我叫杨惠雯，出生于2005年5月，一个来自贵州大山的女孩。我的家庭条件普普通通，父母工作繁忙，于是从初中开始便被丢去住校。我的前半辈子活成了老师眼里的"尖子生"，最后却因高考失利沦为求职链底层双非选手。

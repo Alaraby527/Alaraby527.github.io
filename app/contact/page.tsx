@@ -20,7 +20,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto">
           <section className="text-center mb-16">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              联系<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">我</span>
+              联系<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">我</span>
             </h1>
           </section>
 

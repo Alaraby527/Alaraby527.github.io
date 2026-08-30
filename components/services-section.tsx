@@ -38,7 +38,7 @@ export function ServicesSection() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4">
-              我会的<span className="bg-[#FF4A60] text-white px-3 py-1 inline-block">十八般武艺</span>
+              我会的<span className="bg-[#FF4A60] text-white px-3 py-1 inline-block hl-block">十八般武艺</span>
             </h2>
             <p className="text-[#393939] text-base md:text-lg font-medium leading-relaxed md:leading-[30px] max-w-2xl mx-auto">
               鄙人不才，虽然不精，但什么都会点。

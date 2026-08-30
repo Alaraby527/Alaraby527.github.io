@@ -41,7 +41,7 @@ export function ExperienceSection() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div className="text-white pt-0 md:pt-12 md:sticky md:top-12 self-start">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 md:mb-8 leading-[1.3]">
-              来看看我的 <span className="bg-[#6366F1] text-white px-3 py-1 inline-block">过往经历</span>
+              来看看我的 <span className="bg-[#6366F1] text-white px-3 py-1 inline-block hl-block">过往经历</span>
             </h2>
             <p className="text-gray-400 mb-8 md:mb-10 leading-relaxed text-base md:text-lg">
               经过多次职场尝试，我终于找到自己的dream job，我要当产品经理！

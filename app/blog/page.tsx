@@ -40,7 +40,7 @@ function WritingSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            写点的<span className="bg-[#10B981] text-white px-3 py-1 inline-block">东西</span>
+            写点的<span className="bg-[#10B981] text-white px-3 py-1 inline-block hl-block">东西</span>
           </h2>
           <p className="text-gray-600">随笔和技术文章,记录思考的碎片。</p>
         </div>

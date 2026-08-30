@@ -39,7 +39,7 @@ export function TestimonialsSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 pt-4 md:pt-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-[1.3]">
-            他人如何评价<span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">我</span>
+            他人如何评价<span className="bg-[#2F81F7] text-white px-3 py-1 inline-block hl-block">我</span>
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto pb-8">
             为了避免过度谦卑/自大，他人的评价或许能让你看到"客观"的我

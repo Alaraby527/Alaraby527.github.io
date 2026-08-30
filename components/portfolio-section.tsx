@@ -19,7 +19,7 @@ export function PortfolioSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             来看看我的 <br />
-            <span className="bg-[#FFC224] text-black px-3 py-1 inline-block">作品集</span>
+            <span className="bg-[#FFC224] text-black px-3 py-1 inline-block hl-block">作品集</span>
           </h2>
         </div>
 

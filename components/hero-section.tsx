@@ -25,8 +25,8 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
         <div className="flex items-start">
           <h1 className="text-[42px] leading-[50px] md:text-[72px] font-bold md:leading-[85px]">
-            我是 <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Alaraby</span>，一名来自{" "}
-            <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">贵州贵阳</span> 的小镇做题家<span className="bg-[#FFD700] text-white px-3 py-1 inline-block">（失败版）</span>
+            我是 <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">Alaraby</span>，一名来自{" "}
+            <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block hl-block">贵州贵阳</span> 的小镇做题家<span className="bg-[#FFD700] text-white px-3 py-1 inline-block hl-block">（失败版）</span>
           </h1>
         </div>
 

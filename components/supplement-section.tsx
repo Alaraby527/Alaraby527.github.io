@@ -20,7 +20,7 @@ export function SupplementSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            补充<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">项目</span>
+            补充<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">项目</span>
           </h2>
           <p className="text-gray-600">一些更早期的完整项目与学术实践,它们记录了我一路走来的痕迹。</p>
         </div>
@@ -67,7 +67,7 @@ export function SupplementSection() {
 
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            方法论<span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">沉淀</span>
+            方法论<span className="bg-[#2F81F7] text-white px-3 py-1 inline-block hl-block">沉淀</span>
           </h2>
           <p className="text-gray-600">把踩过的坑整理成可复用的判断框架,让下一次决策更快、更稳。</p>
         </div>

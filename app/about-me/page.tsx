@@ -68,7 +68,7 @@ export default function AboutMePage() {
         <div className="max-w-4xl mx-auto space-y-16">
           <section className="text-center">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              深入<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">了解我</span>
+              深入<span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block hl-block">了解我</span>
             </h1>
           </section>
 
