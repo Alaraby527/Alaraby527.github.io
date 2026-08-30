@@ -7,7 +7,7 @@ import { projects } from "@/lib/portfolio-projects"
 const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
   "jd-ai-shopping-guide-agent": { bgColor: "#E1251B", illustration: "/images/studio-workspace.svg" },
   "tv-shopping-copilot": { bgColor: "#2F81F7", illustration: "/images/venture-workspace.svg" },
-  "huohuahub-ai-creator-platform": { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" },
+  "huohua-worktable": { bgColor: "#FFC224", illustration: "/uploads/huohua-worktable-preview.png" },
   "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },
   "lucky-growth-agent": { bgColor: "#6366F1", illustration: "/images/studio-workspace.svg" },
 }

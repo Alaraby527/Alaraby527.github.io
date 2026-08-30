@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
   "jd-ai-shopping-guide-agent": { bgColor: "#E1251B", illustration: "/images/studio-workspace.svg" },
   "tv-shopping-copilot": { bgColor: "#2F81F7", illustration: "/images/venture-workspace.svg" },
-  "huohuahub-ai-creator-platform": { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" },
+  "huohua-worktable": { bgColor: "#FFC224", illustration: "/uploads/huohua-worktable-preview.png" },
   "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },
   "lucky-growth-agent": { bgColor: "#6366F1", illustration: "/images/studio-workspace.svg" },
 };
@@ -317,7 +317,7 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
                     className="inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    查看项目源码 / 在线 Demo
+                    {project.sourceUrl.includes("github.com") ? "查看项目源码" : "在线体验 Demo"}
                   </a>
                 )}
               </div>
@@ -335,20 +335,26 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
               </p>
             </div>
 
-            <div className="mb-10">
-              <SectionHeading title="用户研究与洞察" color={style.bgColor} />
-              <NumberedList items={project.research} color={style.bgColor} />
-            </div>
+            {project.research.length > 0 && (
+              <div className="mb-10">
+                <SectionHeading title="用户研究与洞察" color={style.bgColor} />
+                <NumberedList items={project.research} color={style.bgColor} />
+              </div>
+            )}
 
-            <div className="mb-10">
-              <SectionHeading title="解决方案" color={style.bgColor} />
-              <NumberedList items={project.solution} color={style.bgColor} />
-            </div>
+            {project.solution.length > 0 && (
+              <div className="mb-10">
+                <SectionHeading title="解决方案" color={style.bgColor} />
+                <NumberedList items={project.solution} color={style.bgColor} />
+              </div>
+            )}
 
-            <div className="mb-10">
-              <SectionHeading title="AI 策略" color={style.bgColor} />
-              <NumberedList items={project.aiStrategy} color={style.bgColor} />
-            </div>
+            {project.aiStrategy.length > 0 && (
+              <div className="mb-10">
+                <SectionHeading title="AI 策略" color={style.bgColor} />
+                <NumberedList items={project.aiStrategy} color={style.bgColor} />
+              </div>
+            )}
 
             {project.detailCards && project.detailCards.length > 0 && (
               <div className="mb-10">
