@@ -8,9 +8,10 @@ import { Button } from "@/components/ui/button"
 
 const navItems = [
   { label: "首页", href: "/" },
-  { label: "关于我", href: "/about" },
   { label: "作品集", href: "/portfolio" },
+  { label: "关于我", href: "/about" },
   { label: "博客", href: "/blog" },
+  { label: "简历", href: "/resume" },
 ]
 
 export function Navigation() {

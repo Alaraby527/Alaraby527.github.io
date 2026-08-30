@@ -67,13 +67,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/about" className="hover:text-white transition-colors">
-                    关于我
+                  <a href="/portfolio" className="hover:text-white transition-colors">
+                    作品集
                   </a>
                 </li>
                 <li>
-                  <a href="/portfolio" className="hover:text-white transition-colors">
-                    作品集
+                  <a href="/about" className="hover:text-white transition-colors">
+                    关于我
                   </a>
                 </li>
                 <li>
@@ -85,36 +85,21 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">实用页面</h3>
+              <h3 className="font-bold mb-4">更多</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    设计规范
+                  <a href="/resume" className="hover:text-white transition-colors">
+                    简历
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    新手指南
+                  <a href="/about-me" className="hover:text-white transition-colors">
+                    深入了解我
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    404 页面
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    密码保护
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    授权许可
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    更新日志
+                  <a href="/contact" className="hover:text-white transition-colors">
+                    联系我
                   </a>
                 </li>
               </ul>

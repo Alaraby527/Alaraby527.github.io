@@ -1,8 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { LogoMarquee } from "@/components/logo-marquee"
-import { PortfolioSection } from "@/components/portfolio-section"
-import { AboutSection } from "@/components/about-section"
+import { AboutTeaser, ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -10,9 +8,8 @@ export default function Home() {
     <main className="min-h-screen bg-[#FFFFFF]">
       <Navigation />
       <HeroSection />
-      <LogoMarquee />
-      <PortfolioSection />
-      <AboutSection />
+      <AboutTeaser />
+      <ContactCta />
       <Footer />
     </main>
   )
