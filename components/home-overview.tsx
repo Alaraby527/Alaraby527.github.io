@@ -1,4 +1,7 @@
-import { ArrowRight, Mail, Phone, MessageCircle, Github } from "lucide-react"
+"use client"
+
+import { useState } from "react"
+import { ArrowRight, Mail, Phone, MessageCircle, Github, Copy, Check } from "lucide-react"
 import Link from "next/link"
 
 // 关于我速览:一段介绍 + 数字 + 三个入口(完整内容在 /about 与 /about-me,此处不重复)
@@ -61,6 +64,14 @@ const contacts = [
 ]
 
 export function ContactCta() {
+  const [copied, setCopied] = useState(false)
+  const copyWechat = async () => {
+    try {
+      await navigator.clipboard.writeText("Y1819664996")
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {}
+  }
   return (
     <section className="container mx-auto px-4 pb-16 md:pb-24">
       <div className="max-w-7xl mx-auto">
@@ -74,25 +85,38 @@ export function ContactCta() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {contacts.map((contact) => {
+              const cls =
+                "w-full bg-[#1c1c1c] border-2 border-white/20 rounded-2xl p-5 text-center hover:border-[#FFC224] hover:-translate-y-1 transition-all cursor-pointer"
               const inner = (
                 <>
-                  <contact.icon className="w-5 h-5 mb-2" />
-                  <p className="text-white/50 text-xs mb-1">{contact.label}</p>
-                  <p className="font-semibold text-sm md:text-base">{contact.value}</p>
+                  {copied && contact.label === "微信" ? (
+                    <Check className="w-5 h-5 mb-2 text-[#4ECDC4]" />
+                  ) : (
+                    <contact.icon className="w-5 h-5 mb-2" />
+                  )}
+                  <p className="text-white/50 text-xs mb-1">
+                    {copied && contact.label === "微信" ? "已复制微信号" : contact.label}
+                  </p>
+                  <p className="font-semibold text-sm md:text-base flex items-center justify-center gap-1">
+                    {contact.value}
+                    {contact.label === "微信" && <Copy className="w-3 h-3 text-white/40" />}
+                  </p>
                 </>
               )
-              return contact.href ? (
+              return contact.label === "微信" ? (
+                <button key={contact.label} onClick={copyWechat} className={cls} title="点击复制微信号">
+                  {inner}
+                </button>
+              ) : (
                 <a
                   key={contact.label}
                   href={contact.href}
-                  className="bg-[#1c1c1c] border-2 border-white/20 rounded-2xl p-5 text-center hover:border-[#FFC224] transition-colors"
+                  target={contact.href?.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className={cls}
                 >
                   {inner}
                 </a>
-              ) : (
-                <div key={contact.label} className="bg-[#1c1c1c] border-2 border-white/20 rounded-2xl p-5 text-center">
-                  {inner}
-                </div>
               )
             })}
           </div>
