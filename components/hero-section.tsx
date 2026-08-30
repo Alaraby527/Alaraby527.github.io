@@ -32,14 +32,14 @@ export function HeroSection() {
 
         <div className="flex justify-center md:justify-end">
           <div
-            className={`relative w-full max-w-md aspect-square bg-[#FDB927] border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 cursor-pointer ${
-              isHovered ? "scale-105 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]" : ""
+            className={`relative w-full max-w-md aspect-square transition-transform duration-300 ${
+              isHovered ? "scale-105" : ""
             }`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <img
-              src="/images/hero-portrait.png"
+              src="/images/hero-portrait.webp"
               alt="数字人形象"
               className={`w-full h-full object-contain transition-transform duration-300 ${
                 isHovered ? "scale-110" : ""
