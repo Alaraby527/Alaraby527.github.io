@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { SupplementSection } from "@/components/supplement-section"
+import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function PortfolioPage() {
         <PortfolioSection />
       </div>
       <SupplementSection />
+      <ContactCta />
       <Footer />
     </main>
   )

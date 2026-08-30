@@ -1,6 +1,3 @@
-import Link from "next/link"
-import { Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export function ServicesSection() {
@@ -65,28 +62,6 @@ export function ServicesSection() {
                 </div>
               </div>
             ))}
-
-            <div className="bg-[#FFC224] border-[3px] border-black rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] transition-transform min-h-[480px] relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <div className="mb-8">
-                <Image
-                  src="/images/get-in-touch.svg"
-                  alt="联系我"
-                  width={92}
-                  height={92}
-                  className="w-[92px] h-[92px]"
-                />
-              </div>
-              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-[#0B0B0B]">联系我</h3>
-              <p className="text-[18px] leading-[30px] font-medium text-[#393939] mb-8">
-                这个人有才华了！我要跟她交朋友！
-              </p>
-              <Button className="bg-black text-white hover:bg-black/90 rounded-[16px] px-12 py-6 font-medium text-[18px] w-full max-w-[340px] h-[64px]" asChild>
-                <Link href="/contact">
-                  <Mail className="w-5 h-5 mr-2" />
-                  联系我
-                </Link>
-              </Button>
-            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { AboutSection } from "@/components/about-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { ServicesSection } from "@/components/services-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <ExperienceSection />
       <ServicesSection />
       <TestimonialsSection />
+      <ContactCta />
       <Footer />
     </main>
   )

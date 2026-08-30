@@ -11,7 +11,6 @@ const navItems = [
   { label: "作品集", href: "/portfolio" },
   { label: "关于我", href: "/about" },
   { label: "博客", href: "/blog" },
-  { label: "简历", href: "/resume" },
 ]
 
 export function Navigation() {

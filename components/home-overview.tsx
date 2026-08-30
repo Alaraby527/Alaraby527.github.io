@@ -46,13 +46,6 @@ export function AboutTeaser() {
             深入了解我
             <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link
-            href="/resume"
-            className="inline-flex items-center justify-center gap-2 bg-white text-black border-2 border-black px-8 py-4 rounded-xl font-semibold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
-          >
-            查看简历
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </div>
     </section>

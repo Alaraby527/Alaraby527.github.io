@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { ArticlesSection } from "@/components/articles-section"
+import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
@@ -94,6 +95,7 @@ export default function BlogPage() {
       <div className="pt-8">
         <ArticlesSection />
       </div>
+      <ContactCta />
       <Footer />
     </main>
   )
