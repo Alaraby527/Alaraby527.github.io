@@ -41,26 +41,11 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
           <p className="mt-4 text-gray-600">{essay.description}</p>
         </div>
 
-        <article className="space-y-12">
-          {essay.blocks.map((block, blockIndex) => (
-            <div key={blockIndex}>
-              {block.date && (
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="bg-black text-white text-xs font-semibold px-4 py-1.5 rounded-full">{block.date}</span>
-                  {block.heading && <span className="text-lg font-bold text-[#0B0B0B]">{block.heading}</span>}
-                </div>
-              )}
-              {!block.date && block.heading && (
-                <h2 className="text-2xl font-bold mb-5 text-[#0B0B0B]">{block.heading}</h2>
-              )}
-              <div className="space-y-4 border-l-4 border-[#FAF5F0] pl-6">
-                {block.paragraphs.map((paragraph, index) => (
-                  <p key={index} className="text-[#393939] text-lg leading-[32px]">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
+        <article className="border-l-4 border-[#FAF5F0] pl-6 md:pl-8 space-y-5">
+          {essay.paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-[#393939] text-lg leading-[32px]">
+              {paragraph}
+            </p>
           ))}
         </article>
 

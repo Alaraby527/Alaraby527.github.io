@@ -6,6 +6,7 @@ export type Methodology = {
   index: string
   title: string
   englishTitle: string
+  skillUrl?: string
   tagline?: string
   summary: string
   suitableFor: string
@@ -378,7 +379,8 @@ export const methodologies: Methodology[] = [
       "无安全合规风险"
     ],
     "example": "在火花工坊 Skill 商店审核中，用 8 维度走查发现 30% 的 Skill 存在「触发但不回答」的致命问题，阻止了低质量 Skill 上线。",
-    "hasSkill": true
+    "hasSkill": true,
+    "skillUrl": "https://github.com/Alaraby527/ai-pm-skills"
   },
   {
     "slug": "prompt-engineering",

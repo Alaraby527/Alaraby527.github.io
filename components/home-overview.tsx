@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, Phone, MessageCircle, MapPin } from "lucide-react"
+import { ArrowRight, Mail, Phone, MessageCircle, Github } from "lucide-react"
 import Link from "next/link"
 
 // 关于我速览:一段介绍 + 数字 + 三个入口(完整内容在 /about 与 /about-me,此处不重复)
@@ -57,7 +57,7 @@ const contacts = [
   { icon: Mail, label: "邮箱", value: "Alarabyyang@163.com", href: "mailto:Alarabyyang@163.com" },
   { icon: Phone, label: "电话", value: "18785177418", href: "tel:18785177418" },
   { icon: MessageCircle, label: "微信", value: "Y1819664996", href: undefined },
-  { icon: MapPin, label: "所在地", value: "上海 · 上海理工大学", href: undefined },
+  { icon: Github, label: "GitHub", value: "Alaraby527", href: "https://github.com/Alaraby527" },
 ]
 
 export function ContactCta() {

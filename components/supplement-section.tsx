@@ -102,7 +102,14 @@ export function SupplementSection() {
                         </span>
                         <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                      <h4 className="text-lg font-bold mb-1 text-[#0B0B0B]">{methodology.title}</h4>
+                      <h4 className="text-lg font-bold mb-1 text-[#0B0B0B]">
+                        {methodology.title}
+                        {methodology.skillUrl && (
+                          <span className="ml-2 inline-block bg-[#4ECDC4] text-black text-[10px] font-bold px-2 py-0.5 rounded-full border border-black align-middle">
+                            Skill 已上线
+                          </span>
+                        )}
+                      </h4>
                       <p className="text-xs font-mono uppercase tracking-wider text-gray-500 mb-3">{methodology.englishTitle}</p>
                       <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 flex-1">{methodology.summary}</p>
                       <span className="mt-4 inline-flex items-center gap-2 font-semibold text-[#0B0B0B] group-hover:gap-3 transition-all text-sm">

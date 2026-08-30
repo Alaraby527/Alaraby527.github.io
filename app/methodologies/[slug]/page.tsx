@@ -116,17 +116,30 @@ export default async function MethodologyDetail({ params }: { params: Promise<{ 
             <p className="text-white/90 leading-relaxed">{methodology.example}</p>
           </div>
 
-          {methodology.sourceUrl && (
-            <div className="mt-8">
-              <a
-                href={methodology.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                查看原文 / 源码仓库
-              </a>
+          {(methodology.sourceUrl || methodology.skillUrl) && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {methodology.sourceUrl && (
+                <a
+                  href={methodology.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-900 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  查看原文 / 源码仓库
+                </a>
+              )}
+              {methodology.skillUrl && (
+                <a
+                  href={methodology.skillUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#FFC224] text-black border-2 border-black px-5 py-2.5 rounded-xl font-semibold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  真实产出:这个 Skill 的仓库
+                </a>
+              )}
             </div>
           )}
         </div>
