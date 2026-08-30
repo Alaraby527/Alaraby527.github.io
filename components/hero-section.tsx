@@ -30,10 +30,10 @@ export function HeroSection() {
           </h1>
         </div>
 
-        <div className="flex justify-center md:justify-end">
+        <div className="flex justify-center md:justify-start md:pl-8">
           <div
-            className={`relative w-full max-w-md aspect-square transition-transform duration-300 ${
-              isHovered ? "scale-105" : ""
+            className={`relative w-full max-w-sm aspect-square bg-white border-4 border-black rounded-[32px] overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 ${
+              isHovered ? "scale-105 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]" : ""
             }`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
