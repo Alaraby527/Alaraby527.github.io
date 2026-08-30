@@ -5,7 +5,6 @@ import { projects } from "@/lib/portfolio-projects"
 
 // 每个项目的卡片配色与插画(展示层映射,数据本体在 lib/portfolio-projects.ts)
 const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
-  "jd-ai-shopping-guide-agent": { bgColor: "#E1251B", illustration: "/images/studio-workspace.svg" },
   "tv-shopping-copilot": { bgColor: "#2F81F7", illustration: "/images/venture-workspace.svg" },
   "huohua-worktable": { bgColor: "#FFC224", illustration: "/uploads/huohua-worktable-preview.png" },
   "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },

@@ -14,7 +14,6 @@ export async function generateStaticParams() {
 
 // 展示层配色/插画映射(与作品集列表页保持一致)
 const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
-  "jd-ai-shopping-guide-agent": { bgColor: "#E1251B", illustration: "/images/studio-workspace.svg" },
   "tv-shopping-copilot": { bgColor: "#2F81F7", illustration: "/images/venture-workspace.svg" },
   "huohua-worktable": { bgColor: "#FFC224", illustration: "/uploads/huohua-worktable-preview.png" },
   "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },
@@ -22,9 +21,7 @@ const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
 };
 
 // 现有可交互 Demo 的站内入口(内容本体不变,只是把原有页面接进新作品集)
-const demoLinks: Record<string, { url: string; label: string }> = {
-  "jd-ai-shopping-guide-agent": { url: "/portfolio/ai-shopping", label: "查看京东 AI 导购交互原型 Demo" },
-};
+const demoLinks: Record<string, { url: string; label: string }> = {};
 
 function SectionHeading({ title, color }: { title: string; color: string }) {
   return (

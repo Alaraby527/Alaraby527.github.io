@@ -3,16 +3,28 @@ import Image from "next/image"
 export function ExperienceSection() {
   const experiences = [
     {
-      title: "一站式求职助手网页搭建（项目）",
+      title: "物智进化 数据采集&标注实习生（实习）",
       description:
-        "完整贯穿AI产品生命周期：包含用户研究、需求拆解、PRD撰写、产品架构设计、MVP落地、版本管控、项目复盘全链路，直面AI开发的真实痛点并给出解决方案，匹配AI产品经理'用AI落地产品、把控迭代节奏'的核心要求。",
-      icon: "/images/company.png",
+        "搭建SOP规则、优化流程提效，深入理解'数据标注→模型训练→效果输出'的AI全链路逻辑，建立对AI技术边界、成本、数据价值的认知，是AI产品经理区别于普通产品经理的核心底层能力。",
+      icon: "/images/startup.png",
     },
     {
-      title: "智能发票查重与合规审查系统（项目）",
+      title: "京东零售 AI 导购 Agent（实习）",
       description:
-        "完整覆盖需求调研、迭代规划、AI工作流架构设计、提示词规则制定、风险评估与长期roadmap规划全流程，落地Dify平台+OCR识别的真实业务场景，有明确的效率提升数据，是典型的AI产品从0到1落地实践。",
+        "面向京东零售黑电/3C 品类负责 AI 导购 Agent 迭代优化：重构 RAG 六层分层知识库，设计 6 套 Agent 提示词模板与版本评测机制，搭建全维度指标看板与 Bad Case 闭环治理体系。",
       icon: "/images/agency.png",
+    },
+    {
+      title: "唯享科技 测试实习生（实习）",
+      description:
+        "独立完成Coze平台智能识别工作流搭建，设计识别-校验-兜底的完整逻辑，输出产品文档、跟进问题闭环、管理多任务优先级，还原企业内AI产品经理对接业务、落地功能、保障上线的真实工作内容。",
+      icon: "/images/busines.png",
+    },
+    {
+      title: "火花工坊 AI 运营（实习）",
+      description:
+        "在 AI 创作者社区冷启动中负责用户调研与平台重设计、作者成长体系与 Mentor SOP 设计，并在 Dify 上落地 4 个应用与主控 Workflow，把周复盘从 2 小时压缩到 3 分钟。",
+      icon: "/images/company.png",
     },
   ]
 

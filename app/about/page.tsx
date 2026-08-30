@@ -1,8 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { AboutSection } from "@/components/about-section"
-import { ExperienceSection } from "@/components/experience-section"
 import { ServicesSection } from "@/components/services-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
@@ -16,9 +14,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#FFFFFF]">
       <Navigation />
       <AboutSection />
-      <ExperienceSection />
       <ServicesSection />
-      <TestimonialsSection />
       <ContactCta />
       <Footer />
     </main>
