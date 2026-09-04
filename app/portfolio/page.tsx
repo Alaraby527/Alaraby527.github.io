@@ -5,8 +5,8 @@ import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "作品集 - Paperfolio",
-  description: "浏览我的设计作品与项目案例",
+  title: "作品集",
+  description: "浏览 AI 产品经理项目案例与评测迭代",
 }
 
 export default function PortfolioPage() {

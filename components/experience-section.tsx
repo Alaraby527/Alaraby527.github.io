@@ -39,8 +39,8 @@ export function ExperienceSection() {
     },
     {
       title: "火花工坊 AI 运营（实习）",
-      link: { url: "/portfolio/huohua-worktable", label: "衍生作品:火花工坊实习生工作台" },
-      summary: "在 AI 创作者社区冷启动中负责用户调研、平台重设计与 AI 运营系统落地。",
+      link: { url: "/portfolio/huohua-worktable", label: "查看项目详情:火花工坊 AI 运营平台" },
+      summary: "在 AI 创作者社区冷启动中负责用户调研、平台重设计，并将多模块 AI 工具接入日常工作。",
       icon: "/images/company.png",
       metrics: [
         { value: "2h→3min", label: "周复盘耗时" },
@@ -50,9 +50,9 @@ export function ExperienceSection() {
       ],
       details: [
         "24 份问卷+访谈推翻「发课程=提供价值」假设，输出 12 项体验问题与平台重设计方案",
-        "设计三类身份×五级成长体系与 Mentor SOP，飞书 Base App 把执行从五步压缩到三步",
-        "528 张课件 OCR 化，搭建微信公众号 RAG 问答机器人（15 题评测全通过）",
-        "Dify 落地 4 应用+1 知识库，主控 Workflow 8 节点串联「数据→周画像→话术→写回飞书」",
+        "设计三类身份×五级成长体系与 Mentor SOP，飞书 Base App 服务 12 名实习生，把执行从五步压缩到三步",
+        "528 张课件 OCR 化，搭建已接入公众号的 RAG 问答机器人（15 题评测全通过）",
+        "AI 运营平台供团队全员使用，AI 日报每天推送到各私域；主控 Workflow 8 节点串联「数据→周画像→话术→写回飞书」",
       ],
     },
     {

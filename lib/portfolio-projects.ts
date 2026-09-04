@@ -18,8 +18,10 @@ export type Project = {
   index: string
   title: string
   subtitle: string
+  status?: string
   role: string
   duration: string
+  cover?: string
   summary: string
   result: string
   tags: string[]
@@ -32,18 +34,21 @@ export type Project = {
   reflection: string
   detailCards?: DetailCard[]
   sourceUrl?: string
+  docUrl?: string
 }
 
 export const projects: Project[] = [
   {
     "slug": "tv-shopping-copilot",
+    "index": "01",
     "title": "电视选购 Copilot",
     "subtitle": "从零自研 Multi-Agent 电视导购系统",
-    "role": "个人项目 · 独立设计与开发",
+    "status": "实习后独立重做 · 模拟评测",
+    "role": "实习后独立重做 · 独立设计与开发",
     "duration": "2026.08",
     "cover": "",
-    "summary": "不依赖 Dify 等低代码平台，用 Python 标准库从零实现 Multi-Agent 电视导购系统：Master 确定性路由 + 5 个 Worker Agent + Replanner 硬约束检查 + Compliance 合规审核（5条红线+修正循环）。自研 RAG 检索、需求解析器（支持中文数字/3k缩写/2米5口语/否定句）、短期+长期记忆。25条评测集（正常/边界/异常三层）100% 通过，零第三方依赖，clone 即跑。",
-    "result": "完整 Multi-Agent 系统落地，约2000行 Python 代码；25条评测集三层全通过（正常100%/边界100%/异常100%）；4个知识库（商品/促销/履约/售后）+ 自研 RAG；每个 Agent 附带完整节点 PRD（六要素）；前端界面展示实时执行轨迹；AI PRD 文档含三层监控设计。",
+    "summary": "这是实习后基于导购业务认知独立重做的验证版本：不依赖 Dify 等低代码平台，用 Python 标准库实现 Multi-Agent 电视导购系统，包括确定性路由、5 个 Worker、Replanner 硬约束检查、Compliance 合规审核、自研 RAG、需求解析器和短期/长期记忆。静态样例知识库上的 25 条模拟评测，V1.0 72%（18/25）→V1.1 92%（23/25）。",
+    "result": "完成可运行的 Multi-Agent 验证版本，约 2000 行 Python 代码；25 条模拟评测集通过率 72%（18/25）→92%（23/25），知识库外型号幻觉 4 次→0 次；配套 4 个静态样例知识库、节点 PRD、执行轨迹界面和评测报告。这组指标来自上述 25 条样例用例。",
     "tags": [
       "Python",
       "Multi-Agent",
@@ -53,8 +58,8 @@ export const projects: Project[] = [
       "Agent 设计"
     ],
     "keyMetric": {
-      "value": "25/25",
-      "label": "评测通过率（三层全达标）"
+      "value": "72%→92%",
+      "label": "25 条模拟评测通过率"
     },
     "metrics": [
       {
@@ -115,8 +120,8 @@ export const projects: Project[] = [
       },
       {
         "tag": "质量保障",
-        "title": "25条三层评测集，V1.0 全通过 + 12项迭代修复",
-        "content": "按课程方法论分正常Case（15条，达标线90%）、边界Case（7条，达标线50%）、异常Case（3条，异常率≤1%）。V1.0 评测 25/25 = 100%。迭代过程中修复12项问题：f-string语法、3k正则中文边界、E8K误判预算、明亮客厅关键词、对比意图被澄清拦截等。"
+        "title": "25 条模拟评测集，V1.0→V1.1 迭代修复",
+        "content": "按正常、边界、异常三层组织 25 条模拟用例。V1.0 通过 18/25（72%），V1.1 通过 23/25（92%）。迭代过程中修复了知识库外型号幻觉、3k 正则中文边界、E8K 误判预算、明亮客厅关键词、对比意图被澄清拦截等问题。"
       },
       {
         "tag": "产品思考",
@@ -134,12 +139,13 @@ export const projects: Project[] = [
   {
     "slug": "huohua-worktable",
     "index": "03",
-    "title": "火花工坊实习生工作台",
-    "subtitle": "嫌每天填表太烦，我把实习生 SOP 做成了一个 App",
-    "role": "独立设计与搭建",
+    "title": "火花工坊 AI 运营平台",
+    "subtitle": "从实习生协作到私域分发的多模块 AI 工作流",
+    "status": "实际投入使用 · 多模块平台",
+    "role": "实际使用 · 独立设计与搭建",
     "duration": "2026.06—2026.08",
-    "summary": "带实习生时发现「落表」这件事每天要花 30 分钟：看文档→找任务→做→登记→汇报，五步走完触达完成率只有 70%。用飞书 Base App 搭建实习生工作台，把流程压缩成「打开→做→勾」三步：6 大模块可视化任务面板（触达/社群/供给线/情报/数据看板/我的），任务自动分配、状态一键更新、数据自动汇总，日均耗时降到 5 分钟，触达完成率提升到 95%。",
-    "result": "实习生工作台 1 个（6 大模块任务面板），操作步骤 5 步压缩到 3 步，日均落表耗时 30 分钟→5 分钟，触达完成率 70%→95%，已上线可直接在线体验。",
+    "summary": "在 AI 创作者社区冷启动阶段，负责火花工坊 AI 产品方向，独立设计并搭建一组进入日常业务的工具：实习生工作台服务 12 名实习生，AI 运营平台供团队全员使用，AI 日报每天推送到各私域，公众号 RAG 已接入用于课程答疑。本文重点展开工作台的流程改造，并串起其他模块的实际使用与迭代。",
+    "result": "火花工坊的多个模块已进入实际使用：工作台服务 12 名实习生，操作步骤 5 步压缩到 3 步，日均落表耗时 30 分钟→5 分钟，触达完成率 70%→95%；AI 运营平台由团队全员使用，AI 日报每天覆盖各私域，公众号 RAG 已接入并用于答疑。",
     "tags": [
       "飞书 Base App",
       "SOP",
@@ -152,8 +158,8 @@ export const projects: Project[] = [
     },
     "metrics": [
       {
-        "value": "5步→3步",
-        "label": "操作步骤"
+        "value": "4 个",
+        "label": "核心模块"
       },
       {
         "value": "30min→5min",
@@ -164,8 +170,8 @@ export const projects: Project[] = [
         "label": "触达完成率"
       },
       {
-        "value": "6 个",
-        "label": "可视化任务模块"
+        "value": "12 名",
+        "label": "工作台使用者"
       }
     ],
     "challenge": "担任 Mentor 管实习生时发现「落表」每天花 30 分钟：任务散落在文档和群里，登记靠自觉、汇总靠人肉，触达完成率只有 70%。",
@@ -200,6 +206,11 @@ export const projects: Project[] = [
           "url": "https://dcniaqwtmoca.feishuapp.com/app/app_17cef9xm88c",
           "label": "在线体验火花工坊实习生工作台（飞书 Base App）"
         }
+      },
+      {
+        "title": "四个模块进入火花工坊日常工作",
+        "tag": "平台使用",
+        "content": "工作台服务 12 名实习生；AI 运营平台由团队全员使用，支持运营复盘与内容协作；AI 日报每天推送到各私域；公众号 RAG 已接入，用于课程答疑，使用频率较低。不同模块承担不同的业务动作，共同组成火花工坊的 AI 运营平台。"
       }
     ],
     "sourceUrl": "https://dcniaqwtmoca.feishuapp.com/app/app_17cef9xm88c"
@@ -209,7 +220,8 @@ export const projects: Project[] = [
     "index": "04",
     "title": "MSDS 职业病危害因素智能识别",
     "subtitle": "V1 8/12 → V2 11/12：用本地 OCR + 证据链把识别准确率拉到 92%",
-    "role": "独立搭建 · 工作流设计 / OCR 选型 / 评测验证",
+    "status": "独立原型 · 黄金集评测",
+    "role": "独立原型 · 工作流设计 / OCR 选型 / 评测验证",
     "duration": "2026.05—2026.06",
     "summary": "面向职业卫生人员的 AI 辅助识别 Agent：从 MSDS 成分章节提取 CAS 编号、含量和页码证据，匹配职业病危害因素知识表，对不确定项交回人工复核。V1 用 PDF 文本抽取仅达 8/12，V2 引入本地中文 OCR + 页图证据链后提升至 11/12，剩余 1 例保留为 Bad Case 不强行修对。",
     "result": "完成从 V1 到 V2 的迭代：PDF 文本抽取 → 本地 OCR + 证据链，黄金集 8/12 → 11/12；设计三条安全规则（不伪造字段、高毒必复核、未命中≠无危害），每条判定保留原始 CAS、规范 CAS、页码与处理动作。",
@@ -388,10 +400,11 @@ export const projects: Project[] = [
     "index": "05",
     "title": "Lucky Growth Agent｜瑞幸咖啡用户运营智能体",
     "subtitle": "从「千人一面」推送到「千人千面」的 AI 运营决策",
-    "role": "AI 产品经理（个人项目）",
+    "status": "独立原型 · 模拟数据",
+    "role": "独立原型 · 模拟数据与评测",
     "duration": "2026.08",
-    "summary": "面向瑞幸咖啡 1.5 亿会员的用户运营场景，设计并搭建 AI 运营智能体：感知层采集时间/位置/行为/社交五维信号识别六大消费意图，决策层基于「生命周期×意图」24 格策略矩阵自主生成推荐+优惠+渠道+文案，置信度分级实现高置信度自动执行/中置信度人工审核/低置信度转人工。在 Dify 上落地双层 LLM 工作流（策略分析层内部思考+回复生成层用户可见），配套运营工作台 Demo，建立三类 Case 评测体系与成本优化方案，单次对话成本降低 68%。",
-    "result": "意图识别准确率 90%，正常 Case 通过率 90%、边界 Case 55%、异常 Case 错误率 0%；双层 LLM 架构实现内部思考与用户回复分离；单次对话成本 0.011→0.0035 元（降 68%）；P95 响应 6.2s；覆盖 6 大意图×4 生命周期=24 个策略单元格。",
+    "summary": "这是面向大型咖啡会员运营场景的独立原型：基于模拟用户信号设计 AI 运营智能体，感知层识别六大消费意图，决策层用「生命周期×意图」24 格策略矩阵生成推荐、优惠、渠道和文案，置信度分级连接自动执行与人工审核。在 Dify 上搭建双层 LLM 工作流与运营工作台 Demo，并用模拟数据建立三类 Case 评测和成本优化方案。",
+    "result": "在模拟数据与评测集上，意图识别准确率 90%，正常 Case 通过率 90%、边界 Case 55%、异常 Case 错误率 0%；单次对话成本估算 0.011→0.0035 元（降 68%），P95 估算 6.2s。",
     "tags": [
       "Agent",
       "Workflow",
@@ -404,7 +417,7 @@ export const projects: Project[] = [
     ],
     "keyMetric": {
       "value": "68%",
-      "label": "单次对话成本下降"
+      "label": "模拟评测成本估算下降"
     },
     "metrics": [
       {

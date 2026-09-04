@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
 
-export const metadata: Metadata = { title: { template: "%s | 杨惠雯", default: "杨惠雯｜AI 产品经理作品集" }, description: "2026 届 AI 产品经理秋招作品集：企业知识助手、AI 面试陪练、内容增长 Copilot，以及可复用的 AI 产品方法论", generator: "v0.app" }
+export const metadata: Metadata = { title: { template: "%s | 杨惠雯", default: "杨惠雯｜AI 产品经理作品集" }, description: "杨惠雯的 AI 产品经理作品集：复杂业务中的 AI 工作流、Agent 可靠性、人机协作与评测迭代。" }
 export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1, userScalable: true }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

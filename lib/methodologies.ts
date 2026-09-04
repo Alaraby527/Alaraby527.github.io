@@ -7,6 +7,7 @@ export type Methodology = {
   title: string
   englishTitle: string
   skillUrl?: string
+  hasSkill?: boolean
   tagline?: string
   summary: string
   suitableFor: string

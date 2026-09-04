@@ -115,7 +115,7 @@ export function Footer() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>由Alaraby二创-由V0驱动</p>
+            <p>杨惠雯的 AI 产品经理作品集</p>
           </div>
         </div>
       </div>

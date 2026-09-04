@@ -36,6 +36,11 @@ export function PortfolioSection() {
                     <span className="inline-flex items-center gap-2 bg-[#FFC224] border-2 border-black rounded-full px-4 py-1 text-xs font-bold text-black">
                       PROJECT {project.index}
                     </span>
+                    {project.status && (
+                      <span className="inline-block bg-[#E0F2FE] border-2 border-black text-black text-xs font-semibold px-3 py-1 rounded-full">
+                        {project.status}
+                      </span>
+                    )}
                     <span className="inline-block bg-black text-white text-xs font-semibold px-4 py-1.5 rounded-full">
                       {project.tags[0]}
                     </span>

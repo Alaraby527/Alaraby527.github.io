@@ -7,8 +7,8 @@ import { Footer } from "@/components/footer"
 import { essays } from "@/lib/essays"
 
 export const metadata = {
-  title: "博客 - Paperfolio",
-  description: "阅读我的随笔、那些没用但好玩的玩具,与视频专栏",
+  title: "思考与记录",
+  description: "记录 AI 产品设计、评测方法和个人思考",
 }
 
 // 文章写作:月光(独立整页) + 两篇随笔(详情在 /blog/[slug])

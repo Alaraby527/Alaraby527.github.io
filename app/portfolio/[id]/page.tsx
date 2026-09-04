@@ -234,8 +234,12 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
     );
   }
 
-  const style = cardStyles[project!.slug] ?? { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" };
-  const demoLink = demoLinks[project!.slug];
+  if (!project) {
+    return null;
+  }
+
+  const style = cardStyles[project.slug] ?? { bgColor: "#FF6B7A", illustration: "/images/studio-workspace.svg" };
+  const demoLink = demoLinks[project.slug];
 
   return (
     <div className="min-h-screen bg-white">
@@ -274,6 +278,12 @@ export default async function PortfolioDetail({ params }: { params: Promise<{ id
                 <span className="text-gray-700">{project.role}</span>
               </div>
             </div>
+
+            {project.status && (
+              <div className="mb-6 inline-flex bg-[#E0F2FE] border-2 border-black rounded-xl px-4 py-2 font-semibold text-[#0B0B0B]">
+                项目状态：{project.status}
+              </div>
+            )}
 
             <div className="flex flex-wrap gap-2 mb-8">
               {project.tags.map((tag) => (

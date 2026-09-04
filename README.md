@@ -1,49 +1,44 @@
-# Cooked this Paperfolio template with V0 | Here’s the template you can use for free
+# 杨惠雯｜AI 产品经理作品集
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://v0.link/nikhil-shukla)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.link/paperfolio)
+这是 [Alaraby527](https://github.com/Alaraby527) 的 AI 产品经理作品集源码，展示复杂业务中的 AI 工作流、Agent 可靠性、人机协作和评测迭代。
 
-![Paperfolio Template Preview](https://global.discourse-cdn.com/vercel/original/2X/e/e8a5d554ecf92e4adb4a718138c60ad7e0c7510e.png)
+## 在线入口
 
-I’ve been experimenting with **V0 - by Vercel**, and I rebuilt the popular **Paperfolio** layout originally created by **Brix Templates**.
-This is a community-made clone — all ownership of the original design stays with @brixtemplatesbrixtemplates.
-My goal was simply to recreate it in V0 so anyone can use or remix it.
+- 作品集主页：<https://alaraby527.github.io/>
+- TV Copilot 静态演示：<https://alaraby527.github.io/tv-buying-copilot/>
+- 个人 GitHub：<https://github.com/Alaraby527>
 
----
+## 项目分层
 
-## Live Demo & Template Access
+| 状态 | 案例 | 关键证据 |
+|------|------|----------|
+| 实际使用 | 火花工坊 AI 运营平台 | 工作台服务 12 名实习生；AI 运营平台全员使用；AI 日报每日推送至各私域；公众号 RAG 已接入 |
+| 实习后独立重做 | 电视选购 Copilot | 25 条模拟评测，72%（18/25）→92%（23/25） |
+| 独立原型 | MSDS 职业病危害因素识别 | 黄金集 8/12→11/12，保留人工复核 |
+| 模拟评测 | Lucky Growth Agent | 基于模拟数据完成策略设计、三轮迭代与评测 |
 
-**→  Template (Clone / Remix):** https://v0.link/paperfolio
+## 项目说明
 
-**→  Live Preview:** https://v0-paperfolio.vercel.app
+项目页会标注每个项目的使用状态、数据来源和评测规模，读者可以按对应 README 查看完整过程与结果。
 
----
+## 本地运行
 
-## Video Walkthrough
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-**→ Watch the walkthrough on X:**
-[https://x.com/i/status/1994130537464910310](https://x.com/i/status/1994130537464910310)
+生产构建：
 
----
+```bash
+pnpm run lint
+pnpm run build
+```
 
-## What’s Inside the Template
+## 目录
 
-* Clean portfolio with hero section and highlight-style text blocks
-* Minimal, bold layout focused on showcasing your work
-* Reusable components built directly in V0
-* Easy to customize for personal portfolios or client sites
-
----
-
-## How to Use It
-
-1. Open the template → https://v0.link/paperfolio
-2. Click on “Open in V0”
-3. Make your styling tweaks
-4. Deploy on Vercel
-
-That’s it — you have a clean, modern portfolio site ready to ship.
-
----
-
-If you end up customizing this, I’d like to see what you build.
+- `app/`：Next.js 页面与项目详情路由
+- `components/`：作品集页面组件
+- `lib/portfolio-projects.ts`：项目案例数据源
+- `public/`：图片与静态资源
+- `.github/workflows/deploy.yml`：GitHub Pages 部署流程

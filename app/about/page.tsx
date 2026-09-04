@@ -6,8 +6,8 @@ import { ContactCta } from "@/components/home-overview"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "关于 - Paperfolio",
-  description: "了解我的经历、技能与过往项目经验",
+  title: "关于我",
+  description: "了解杨惠雯的 AI 产品经理经历、技能与项目方法",
 }
 
 export default function AboutPage() {
