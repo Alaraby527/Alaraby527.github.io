@@ -24,7 +24,7 @@ jobs:
       - name: Prepare offline page
         run: |
           mkdir -p offline
-          printf '%s\\n' '<!doctype html><html><head><meta charset="utf-8"><title>404</title></head><body><h1>404</h1></body></html>' > offline/index.html
+          printf '%s\n' '<!doctype html><html><head><meta charset="utf-8"><title>404</title></head><body><h1>404</h1></body></html>' > offline/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
