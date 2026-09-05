@@ -9,6 +9,10 @@ const cardStyles: Record<string, { bgColor: string; illustration: string }> = {
   "huohua-worktable": { bgColor: "#FFC224", illustration: "/uploads/huohua-worktable-preview.png" },
   "msds-hazard-identification-workflow": { bgColor: "#10B981", illustration: "/images/venture-workspace.svg" },
   "lucky-growth-agent": { bgColor: "#6366F1", illustration: "/images/studio-workspace.svg" },
+  "invoice-risk-review-agent": { bgColor: "#F97316", illustration: "/images/studio-workspace.svg" },
+  "intern-daily-workstation": { bgColor: "#0EA5E9", illustration: "/images/venture-workspace.svg" },
+  "ai-pm-coach": { bgColor: "#8B5CF6", illustration: "/images/studio-workspace.svg" },
+  "aipm-learning-assistant": { bgColor: "#14B8A6", illustration: "/images/venture-workspace.svg" },
 }
 
 export function PortfolioSection() {
