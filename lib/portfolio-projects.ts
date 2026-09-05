@@ -822,6 +822,148 @@ export const projects: Project[] = [
     "sourceUrl": "https://udify.app/chat/6gQzy3besezLctqy",
     "docUrl": "/prd/lucky-growth-agent-node-prd.md"
   }
+  {
+    "slug": "invoice-risk-review-agent",
+    "index": "05",
+    "title": "发票风险审核 Agent",
+    "subtitle": "用规则、二维码和 OCR 组合降低审核风险",
+    "status": "独立原型 · 评测公开",
+    "role": "独立设计与开发",
+    "duration": "2026.08",
+    "summary": "面向企业报销审核场景，设计发票重复与异常风险审核流程，将历史台账、二维码信息、OCR 字段和规则校验组合起来，并保留人工复核作为高风险场景的最终兜底。",
+    "result": "完成可运行 Demo、黄金评测集、OCR/二维码基线、端到端结果和失败案例记录；自动放行率保持为 0%，优先保证高风险审核不被错误自动通过。",
+    "tags": ["Python", "Workflow", "OCR", "风险审核"],
+    "keyMetric": {"value": "0%", "label": "自动放行率"},
+    "metrics": [
+      {"value": "4类", "label": "审核输入"},
+      {"value": "2种", "label": "识别基线"},
+      {"value": "1套", "label": "黄金评测集"}
+    ],
+    "challenge": "发票审核同时涉及字段提取、历史查重、金额与日期校验以及高风险人工判断，单纯依赖 OCR 或大模型容易把识别错误直接传递到审核结论。",
+    "research": [
+      "梳理历史台账、待审核发票和人工复核之间的业务链路",
+      "对比二维码识别、OCR 提取和规则校验在不同字段上的适用边界",
+      "整理字段提取、重复判断和风险审核的黄金测试集"
+    ],
+    "solution": [
+      "先提取发票字段，再与历史台账进行重复和异常比对",
+      "用二维码和 OCR 互相校验，无法确认时进入人工复核",
+      "将评测、失败案例和能力审计材料一起保留，避免只展示成功样例"
+    ],
+    "aiStrategy": [
+      "确定性规则优先处理重复、金额、日期和风险条件",
+      "OCR 用于字段提取，不直接决定最终审核结论",
+      "高风险结果不自动放行，保留人工确认和证据链"
+    ],
+    "reflection": "这个项目验证了企业审核场景里的 AI 价值不只是自动化，而是把不确定性显式暴露出来，让系统知道什么时候必须停下来交给人判断。",
+    "sourceUrl": "https://github.com/Alaraby527/invoice-risk-review-agent"
+  },
+  {
+    "slug": "intern-daily-workstation",
+    "index": "06",
+    "title": "实习生每日工作台",
+    "subtitle": "把任务、打卡和 Mentor 验收串成一个闭环",
+    "status": "真实业务场景 · 可运行 Demo",
+    "role": "独立设计与开发",
+    "duration": "2026.08",
+    "summary": "面向实习团队设计任务执行与打卡系统，按业务线展示每日 SOP，支持任务勾选、打卡提交、附件上传和 Mentor 验收，并将数据同步到飞书多维表格。",
+    "result": "完成 React + NestJS 前后端系统、脱敏交互 Demo、飞书多维表格适配层和 Mentor 验收页面。",
+    "tags": ["React", "NestJS", "飞书", "工作台"],
+    "keyMetric": {"value": "12+3", "label": "实习生与 Mentor 场景"},
+    "metrics": [
+      {"value": "5条", "label": "业务线"},
+      {"value": "4类", "label": "核心页面"},
+      {"value": "前后端", "label": "完整实现"}
+    ],
+    "challenge": "实习任务分散在群聊、表格和文档里，执行标准不统一，Mentor 难以实时确认每个人完成了什么以及卡在哪里。",
+    "research": [
+      "基于 12 名实习生和 3 位 Mentor 的协作观察整理任务痛点",
+      "梳理不同业务线的每日 SOP、交付物和验收标准",
+      "区分实习生执行视角与 Mentor 管理视角的核心信息"
+    ],
+    "solution": [
+      "按身份和业务线提供不同的任务视图",
+      "将任务、打卡、附件和验收串成连续流程",
+      "用飞书多维表格作为业务数据同步层，Demo 使用脱敏数据"
+    ],
+    "aiStrategy": [
+      "当前版本重点验证工作流和协作闭环，不把普通表单强行包装成 AI 产品",
+      "保留后续接入智能任务推荐和异常提醒的扩展边界"
+    ],
+    "reflection": "这个项目让我意识到，数字化工作台的价值首先来自信息和责任边界变清楚，而不是功能数量变多。",
+    "sourceUrl": "https://github.com/Alaraby527/intern-daily-workstation"
+  },
+  {
+    "slug": "ai-pm-coach",
+    "index": "07",
+    "title": "AI PM Coach",
+    "subtitle": "面向 AI 产品经理求职者的轻量教练",
+    "status": "MVP · 尚未量化评测",
+    "role": "独立设计与开发",
+    "duration": "2026.08—2026.09",
+    "summary": "用户输入简历和目标岗位 JD 后，系统生成有证据约束的能力差距、7 天行动计划，并提供针对性模拟面试和四维评分。",
+    "result": "完成可运行 MVP、静态托管方案、访客演示模式、后端 API 和基础测试；当前尚未进行真实用户量化评测。",
+    "tags": ["AI PM", "求职", "MVP", "Node.js"],
+    "keyMetric": {"value": "4维", "label": "模拟面试评分"},
+    "metrics": [
+      {"value": "7天", "label": "行动计划"},
+      {"value": "2种", "label": "部署模式"},
+      {"value": "1套", "label": "基础测试"}
+    ],
+    "challenge": "求职者通常知道自己需要准备，但难以把 JD 要求、已有证据、能力缺口和下一步行动连接起来。",
+    "research": [
+      "从 AI PM 求职场景中拆解简历、JD、面试和行动计划之间的关系",
+      "区分有简历证据的建议与模型推测，降低编造经历的风险",
+      "把模拟面试评分拆成可解释的四个维度"
+    ],
+    "solution": [
+      "先解析简历和 JD，再输出证据约束的能力差距",
+      "将差距转化为 7 天行动计划和模拟面试题",
+      "无后端或模型不可用时提供静态演示和安全降级"
+    ],
+    "aiStrategy": [
+      "要求建议绑定简历中已有证据，不允许模型补写经历",
+      "区分模型建议、用户事实和待补证据",
+      "明确标注 MVP 尚未经过真实用户量化验证"
+    ],
+    "reflection": "这个项目的重点不是让模型给出更漂亮的建议，而是让建议能够回到用户已有证据和下一步行动。",
+    "sourceUrl": "https://github.com/Alaraby527/ai-pm-coach"
+  },
+  {
+    "slug": "aipm-learning-assistant",
+    "index": "08",
+    "title": "AI 产品经理学习助手",
+    "subtitle": "把零散知识组织成可学习、可练习、可自测的路径",
+    "status": "可运行产品原型",
+    "role": "独立设计与开发",
+    "duration": "2026.08",
+    "summary": "基于 AI PM 知识库构建学习平台，提供知识地图、学习计划、面试题库、面试经验、自我测评和学习进度追踪。",
+    "result": "完成纯前端学习产品，包含知识地图、学习计划、面试练习、自我测评和本地进度管理。",
+    "tags": ["React", "TypeScript", "学习产品", "知识管理"],
+    "keyMetric": {"value": "6类", "label": "核心学习模块"},
+    "metrics": [
+      {"value": "9项", "label": "结构化数据模块"},
+      {"value": "7个", "label": "主要页面"},
+      {"value": "0后端", "label": "纯前端架构"}
+    ],
+    "challenge": "AI PM 学习资料多而分散，用户缺少学习顺序、练习标准和对薄弱环节的反馈。",
+    "research": [
+      "将知识库内容按知识地图、面试问题和能力原则重新组织",
+      "拆解从学习到练习、自测和复习的连续路径",
+      "选择纯前端架构，降低使用和部署成本"
+    ],
+    "solution": [
+      "用知识地图组织学习内容和能力关系",
+      "用学习计划和进度记录推动持续学习",
+      "用面试题、自我测评和答案详情形成练习闭环"
+    ],
+    "aiStrategy": [
+      "当前版本重点验证学习路径和反馈闭环，不把静态知识展示包装成 AI 能力",
+      "为后续接入个性化推荐和智能答疑预留数据结构"
+    ],
+    "reflection": "资料本身不是学习产品，只有当用户知道先学什么、如何练习以及哪里需要补强时，知识才真正形成使用价值。",
+    "sourceUrl": "https://github.com/Alaraby527/aipm-learning-assistant"
+  },
 ]
 
 export const getProject = (slug: string) => projects.find((item) => item.slug === slug)
