@@ -10,12 +10,27 @@
 
 ## 项目分层
 
-| 状态 | 案例 | 关键证据 |
-|------|------|----------|
-| 实际使用 | 火花工坊 AI 运营平台 | 工作台服务 12 名实习生；AI 运营平台全员使用；AI 日报每日推送至各私域；公众号 RAG 已接入 |
-| 实习后独立重做 | 电视选购 Copilot | 25 条模拟评测，72%（18/25）→92%（23/25） |
-| 实习后独立重做 | MSDS 职业病危害因素识别 | 基于真实业务重做，黄金集 8/12→11/12，保留人工复核 |
-| 模拟评测 | Lucky Growth Agent | 基于模拟数据完成策略设计、三轮迭代与评测 |
+作品集按项目成熟度和用途分为三层，避免把真实业务、独立原型和学习沉淀混在一起。
+
+### 核心案例
+
+- [电视选购 Copilot](https://github.com/Alaraby527/tv-buying-copilot)：Multi-Agent、RAG、MCP、Memory 和评测闭环
+- [火花工坊 AI 运营平台](https://github.com/Alaraby527/huohuahub-ai-creator-platform)：真实业务使用的多模块 AI 运营平台
+- [MSDS 职业危害识别](https://github.com/Alaraby527/msds-hazard-agent)：OCR、知识库匹配、证据链和人工复核
+- [Lucky Growth Agent](https://github.com/Alaraby527/lucky-growth-agent)：用户画像、增长策略 Agent 和多轮评测
+- [发票风险审核 Agent](https://github.com/Alaraby527/invoice-risk-review-agent)：二维码/OCR、规则审核和风险兜底
+
+### 产品原型
+
+- [实习生每日工作台](https://github.com/Alaraby527/intern-daily-workstation)：任务、打卡、附件和 Mentor 验收
+- [AI PM Coach](https://github.com/Alaraby527/ai-pm-coach)：简历/JD 分析、能力差距和模拟面试
+- [AI 产品经理学习助手](https://github.com/Alaraby527/aipm-learning-assistant)：知识地图、学习计划、题库和自测
+
+### 方法论与工具
+
+- [AI PM SkillKit](https://github.com/Alaraby527/ai-pm-skills)：17 个 Skill 与项目闭环 Workflow
+- [AI PM 方法论笔记](https://github.com/Alaraby527/ai-pm-methodology-notes)：研究、需求、评测和知识库方法
+- [AI PM 简历写作 Skill](https://github.com/Alaraby527/ai-pm-resume-writing)：JD 解析、经历挖掘和简历诊断
 
 ## 项目说明
 
