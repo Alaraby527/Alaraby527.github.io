@@ -133,6 +133,7 @@ const toys = [
     description: "“你的私事，值得联合国讨论。”把求职选择搬上环形议事桌：6 位平等代表为你辩论、三轮议事帮你锚定心意。",
     tag: "方案与创意",
     href: "/portfolio/ai-job",
+    image: "/images/zdb.png",
   },
 ]
 
@@ -185,6 +186,11 @@ function ToyCard({ toy }: { toy: (typeof toys)[number] }) {
       href={toy.href}
       className="group flex h-full flex-col rounded-xl border-4 border-black bg-[#FAF5F0] p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
     >
+      {toy.image && (
+        <div className="relative mb-2.5 aspect-video w-full overflow-hidden rounded-lg border-2 border-black bg-white">
+          <Image src={toy.image} alt={toy.title} fill className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]" sizes="(max-width:640px) 100vw, 33vw" />
+        </div>
+      )}
       <span className="mb-2 inline-flex w-fit items-center rounded-full border-2 border-black bg-white px-2 py-0.5 text-[10px] font-bold text-black">
         {toy.tag}
       </span>
