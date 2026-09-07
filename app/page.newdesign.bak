@@ -1,0 +1,6 @@
+import { Background } from "@/components/background"
+import { Portfolio } from "@/components/portfolio"
+
+export default function Home() {
+  return <main className="min-h-screen p-inset"><div className="fixed inset-[var(--inset)]"><Background src="/alt.mp4" placeholder="/alt-placeholder.png" /></div><div className="fixed inset-[var(--inset)] rounded-[42px] bg-background/45 md:rounded-[72px]" /><Portfolio /></main>
+}

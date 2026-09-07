@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+ignoredBuiltDependencies:
+  - sharp
+allowBuilds:
+  sharp: set this to true or false
