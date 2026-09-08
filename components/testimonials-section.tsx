@@ -6,7 +6,7 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       name: "瓜皮",
-      relation: "八年好友",
+      relation: "8年好友",
       avatar: "/images/guapi.png",
       headerColor: "#FAF5F0",
       bubbleColor: "#FF6B7A",
