@@ -41,20 +41,32 @@ export function HeroSection() {
           </h1>
         </div>
 
-        <div className="flex justify-center md:justify-start md:pl-8">
+        <div className="flex items-start justify-center md:justify-start md:pl-8">
           <div
-            className="relative w-full max-w-sm aspect-square"
+            className="relative aspect-square w-full max-w-sm self-start"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            {/* 数字人直接呈现，不套方框 */}
-            <img
-              src="/images/hero-portrait.webp"
-              alt="数字人形象"
-              className={`h-full w-full animate-float object-contain drop-shadow-[10px_10px_0px_rgba(0,0,0,0.08)] transition-transform duration-500 ${
-                isHovered ? "scale-105" : ""
+            {/* 数字人相框：粗描边 + 硬投影 + 轻微倾斜，悬停回正放大 */}
+            <div
+              className={`animate-float relative h-full w-full rounded-[22px] border-[3px] border-black bg-[#FAF5F0] p-3 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform duration-500 ${
+                isHovered ? "rotate-0 scale-[1.03]" : "rotate-1"
               }`}
-            />
+            >
+              {/* 相框内圈细边 */}
+              <div className="relative h-full w-full overflow-hidden rounded-xl border-2 border-black/15">
+                <img
+                  src="/images/hero-portrait.webp"
+                  alt="数字人形象"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              {/* 四角铆钉 */}
+              <span className="absolute left-1.5 top-1.5 h-2 w-2 rounded-full border border-black bg-white" />
+              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border border-black bg-white" />
+              <span className="absolute bottom-1.5 left-1.5 h-2 w-2 rounded-full border border-black bg-white" />
+              <span className="absolute bottom-1.5 right-1.5 h-2 w-2 rounded-full border border-black bg-white" />
+            </div>
           </div>
         </div>
 
